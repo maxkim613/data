@@ -1,0 +1,11 @@
+package Day1;
+
+public class Ex2 {
+
+	public static void main(String[] args) {
+		int hour =10;
+		int minute = 23;
+		System.out.println(hour+"시"+minute+"분");
+	}
+
+}
