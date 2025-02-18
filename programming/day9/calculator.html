@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .ind{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            width: 70px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Calculator</h3>
+    <br/>
+    <h1></h1>
+
+    <input type="text" id="display" 
+       style="border: none; font-size: 30px; text-align: right; width: 290px; outline: none;" value="0">
+<br/><br/>
+    
+
+    <input type="button" class="ind" value="%" onclick="temp(),operate('%')"/>
+    <input type="button" class="ind" value="CE" onclick="reset()"/>
+    <input type="button" class="ind" value="C" onclick="reset()"/>
+    <input type="button" class="ind" value="&larr;" onclick="backspace()"/>    
+    <br>
+    <input type="button" class="ind" name="7" value="7" onclick="pushNum('7')"/>
+    <input type="button" class="ind" name="8" value="8" onclick="pushNum('8')"/>
+    <input type="button" class="ind" name="9" value="9" onclick="pushNum('9')"/>
+    <input type="button" class="ind"  value="&divide;" onclick="temp(),operate('/')"/>    
+    <br>
+    <input type="button" class="ind" value="4" onclick="pushNum('4')"/>
+    <input type="button" class="ind" value="5" onclick="pushNum('5')"/>
+    <input type="button" class="ind" value="6" onclick="pushNum('6')"/>
+    <input type="button" class="ind" value="&times;" onclick="temp(),operate('*')"/>    
+    <br>
+    <input type="button" class="ind" value="1" onclick="pushNum('1')"/>
+    <input type="button" class="ind" value="2" onclick="pushNum('2')"/>
+    <input type="button" class="ind" value="3" onclick="pushNum('3')"/>
+    <input type="button" class="ind" value="-" onclick="temp(),operate('-')"/>
+    <br>
+    <input type="button" class="ind" value="=" onclick="calculate()"/>
+    <input type="button" class="ind" value="0" onclick="pushNum('0')"/>
+    <input type="button" class="ind" value="." onclick="point('.')"/>
+    <input type="button" class="ind" value="+" onclick="temp(),operate('+')"/>
+    <script type="text/javascript">
+        let value1;
+        let op;
+        function pushNum(num) {
+            if(document.getElementById("display").value==="0") {
+                document.getElementById("display").value = num;
+            }
+            else {
+                document.getElementById("display").value += num;
+            }
+        }
+        function point(num) {
+            if(document.getElementById("display").value.includes(".")) {
+            }
+            else {
+                document.getElementById("display").value += num;
+            }
+        }
+        function reset() {
+            document.getElementById("display").value ="0";
+        }
+        function backspace() {
+            document.getElementById("display").value = document.getElementById("display").value.slice(0,-1)||"0";
+        }
+        function temp() {
+            value1 = parseFloat(document.getElementById("display").value)
+            return value1;
+        }
+        function operate(num) {
+            document.getElementById("display").value = "0";
+            op = num;
+            return op; 
+        }
+        function calculate() {
+            let result=0;
+            let value2=0;
+            value2 = parseFloat(document.getElementById("display").value);
+            if(op==="+") {
+                result = value1 + value2;
+            }
+            else if(op==="-") {
+                result = value1 - value2;
+            }
+            else if(op==="*") {
+                result = value1 * value2;
+            }
+            else if(op==="/") {
+                result = value1 / value2;
+            }
+            else if(op==="%") {
+                result = value1 % value2;
+            }
+            else {
+            }
+            document.getElementById("display").value = result;
+        }
+    </script>
+
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <a href="zindex.html">link</a>
+</body>
+</html>

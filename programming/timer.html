@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15분 타이머</title>
+</head>
+<body>
+    <h1 id="timer">15:00</h1>
+    <button id="startButton">타이머 시작</button>
+
+    <script>
+        let remainingTime = 15 * 60; // 15분 = 15 * 60초
+        let timer; // 타이머 변수
+        const timerElement = document.getElementById("timer");
+        const startButton = document.getElementById("startButton");
+
+        startButton.addEventListener("click", () => {
+            if (timer) {
+                return; // 타이머가 이미 실행 중이면 중복 실행 방지
+            }
+
+            startButton.disabled = true; // 버튼 비활성화
+
+            timer = setInterval(() => {
+                const minutes = Math.floor(remainingTime / 60);
+                const seconds = remainingTime % 60;
+
+                // 화면에 시간 업데이트
+                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+                remainingTime--;
+
+                if (remainingTime < 0) {
+                    clearInterval(timer); // 타이머 정지
+                    timerElement.textContent = "타이머 종료!";
+                    alert("15분이 경과했습니다!");
+                    startButton.disabled = false; // 버튼 다시 활성화
+                    timer = null; // 타이머 초기화
+                }
+            }, 1000); // 1초마다 실행
+        });
+    </script>
+</body>
+</html>

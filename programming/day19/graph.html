@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        position: absolute;
+      }
+      td {
+        width: 40px;
+        height: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+        var xcount=0;
+      function decide() {
+        nameAddition();
+        scoreAddition();
+      }
+      function nameAddition() {
+        var text = document.createElement("span");
+        text.style.display = "inline-block";
+        text.style.width = "60px";
+        text.style.textAlign = "center";
+        text.innerText = document.getElementById("name").value;
+        document.getElementById("graphx").appendChild(text);
+      }
+      //막대그래프
+      function scoreAddition() {
+        var table = document.createElement("table");
+        table.style.position = "absolute";
+        table.style.left = `${xcount * 60+8}px`;
+        for (let i = 0; i < 100; i++) {
+          let tr = document.createElement("tr");
+          let td = document.createElement("td");
+          td.id = "score_" + (100 - i)+"_"+ xcount;
+          tr.appendChild(td);
+          table.appendChild(tr);
+        }
+        document.getElementById("graph").appendChild(table);
+        let score = document.getElementById("score").value;
+        var color = "rgb(" +
+          Math.round(Math.random() * 255) + "," +
+          Math.round(Math.random() * 255) + "," +
+          Math.round(Math.random() * 255) + ")"
+        for (let i = 1; i <= score; i++) {
+          document.getElementById("score_"+i+"_"+xcount).style.backgroundColor = color;
+        }
+        xcount++;
+        console.log(xcount);
+      }
+    </script>
+    점수
+    <div
+      id="graph"
+      style="position: relative; left: 50px; border: solid; height: 300px"
+    ></div>
+    <div
+      id="graphx"
+      style="
+        position: relative;
+        left: 50px;
+
+        height: 20px;
+      "
+    ></div>
+    <p style="position: absolute; top: 325px; left: 0px">이름</p>
+    <br /><br /><br />
+    이름 : <input type="text" id="name" style="width: 100px" /> 점수 :
+    <input type="text" id="score" style="width: 100px" />
+    <input onclick="decide()" type="button" id="decide" value="반영" />
+
+    <a href="pagelink.html">link</a>
+  </body>
+</html>

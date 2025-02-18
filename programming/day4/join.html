@@ -1,0 +1,90 @@
+map<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .join
+        {
+            color: darkgray;
+            display: inline-block;
+            padding: 6px;
+            line-height: 18px;
+            vertical-align: top;
+        }
+        .home
+        { 
+            z-index: 2; 
+            background-image: url(../image/교보.JPG); 
+            position: absolute; top: 20px; left: 20px; width: 191px; height: 70px;
+        }
+        .sfont1{font-size: 14px; position: relative; left: 15px;}
+        .sfont2{font-size: 14px; position: absolute; left: 120px;}
+        .sfont3{font-size: 14px; position: absolute; left: 240px;}
+        .sfont4{font-size: 14px; position: absolute; left: 143px;}
+        .sfont5{font-size: 14px; position: absolute; left: 330px;}
+        
+    </style>
+</head>
+<body>
+    <header>
+        <a href="webs.html">
+            <div class="home">
+            </div>
+        </a>
+       <div align = right style="position: relative; top: 33px; right: 200px;"><h3>회원가입</h3></div>
+       <br/><br/>
+       <hr><br/><br/><br/>
+       
+
+    </header>
+    <nav style="position: relative;">
+        <h2>&nbsp;&nbsp;회원정보 기입</h2>
+        <hr>
+    </nav>
+    <article style="position: relative;">
+        <div class="sfont1">
+           이름 <span style="color: aqua;"> *</span> <input class="sfont2" type="text">
+        </div>
+        <br/>
+        <div class="sfont1">
+            아이디 <span style="color: aqua;"> *</span> <input class="sfont2" type="text">
+        </div>
+        <br/>
+        <div>
+            <span class="sfont1">이메일<span style="color: aqua;"> *</span></span> 
+            <input style="width: 70px;" class="sfont4" type="text">
+            <span class="sfont2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@</span>
+            <input style="width: 73px;" class="sfont3" type="text">
+            <select class="sfont5" name="email">
+                <option value="">선택</option>
+                <option value="naver.com">naver.com</option>
+                <option value="gmail.com">gmail.com</option>
+                <option value="nate.com">nate.com</option>
+                <option value="hanmail.net">hanmail.net</option>
+            </select>
+        </div>
+        <br/>
+        <div class="sfont1">
+            비밀번호 <span style="color: aqua;"> *</span> <input class="sfont2" type="password">
+        </div>
+        <br/>
+        <div class="sfont1">
+            비밀번호 재입력 <span style="color: aqua;"> *</span> <input class="sfont2" type="password">
+        </div>
+        <br/>
+        <div class="sfont1">
+            휴대전화 <span style="color: aqua;"> *</span> <input class="sfont2" type="tel" placeholder="000-0000-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}">
+        </div>
+        <br/>
+        <hr>
+    </article>
+        <hr>
+    <aside>
+    </aside>
+    <footer>
+        <a href="zindex.html" style="position: relative; top: 700px;">link</a>
+    </footer>
+</body>
+</html>

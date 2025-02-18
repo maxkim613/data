@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div id="div1" style="position: absolute; background-color: red; width: 100px; height: 50px; top: 50px; display: inline-block;">
+        </div>
+        <div id="div2" style="position: absolute; background-color: yellow; width: 100px; height: 50px; display: inline-block; top: 100px">
+        </div>
+        <div id="div3" style="position: absolute; background-color: green; width: 100px; top: 200px; height: 50px; display: inline-block;">
+        </div>
+        <br/>
+        <button onclick = "toggleVisibility('div1'); changeColor('div1','green'); changePosition('div1',100,100)">Div1</button>
+        <button onclick = "toggleVisibility('div2'); changeColor('div2','red'); changePosition('div2',120,120)">Div2</button>
+        <button onclick = "toggleVisibility('div3'); changeColor('div3','yellow'); changePosition('div3',140,140)">Div3</button>    
+    </div>
+    
+    <script type="text/javascript">
+        function changePosition(id,left,top) {
+            var dom = document.getElementById(id)
+            dom.style.left = left + "px"
+            dom.style.top = top + "px"
+        }
+        function toggleVisibility(id) {
+            var dom = document.getElementById(id);
+            if (dom.style.visibility == "visible") {
+                dom.style.visibility = "hidden";
+            } else {
+                dom.style.visibility = "visible"
+            }
+        }
+        function changeColor(id, color) {
+            document.getElementById(id).style.background = color;
+        }
+
+    </script>
+</body>
+</html>

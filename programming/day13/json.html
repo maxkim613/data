@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../jquery-3.7.1.min.js"></script>
+
+</head>
+<body>
+    <div id="div1" name="div1">
+
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var req = $.ajax({
+                url : "jsondata.txt",
+                dataType: "json"
+            });
+            req.done(function(data, status) {
+                for (let i = 0; i < data.length; i++) {
+                    var str = "("+data[i].class+") "+"("+ data[i].id+") ("+data[i].name+") "+"<br/>";
+                    $("#div1").append(str);
+                }
+            });
+        });
+    </script>
+</body>
+    
+</html>

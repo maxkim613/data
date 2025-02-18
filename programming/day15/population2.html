@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="https://sgisapi.kostat.go.kr/OpenAPI3/auth/javascriptAuth.json?consumer_key=a676ea7fec064ca087d9"></script>
+    </head>
+    <body> 
+        <script type="text/javascript">
+    //서비스 id :a676ea7fec064ca087d9
+    // 보안 key : 883be0d869e04b9386f0
+            $(document).ready(function () { 
+                $.ajax({ 
+                    url: 'https://sgisapi.kostat.go.kr/OpenAPI3/auth/authentication.json?consumer_key=a676ea7fec064ca087d9&consumer_secret=883be0d869e04b9386f0',
+                    type: "GET", //전송 타입
+                    async: true, //비동기 여부
+                    dataType: "JSON", 
+                    
+                    success: function(response) { 
+                        console.log(response);    
+                        accessToken = data.result.accessToken;
+                        pop(accessToken);
+                    },
+                    error: function (request, status, error) {
+                        console.log("code: " + request.status)
+                        console.log("message: " + request.responseText)
+                        console.log("error: " + error);
+                    },
+                    complete:function(data, textStatus) {
+                        console.log("");
+                        console.log("[complete] : " + textStatus);    				
+                        console.log("");    				
+                    }
+                    
+                })
+            });
+            function pop(access) {
+                $.ajax({ 
+                    url: 'https://sgisapi.kostat.go.kr/OpenAPI3/auth/javascriptAuth.json?consumer_key=a676ea7fec064ca087d9',
+                    type: "POST", //전송 타입
+                    async: true, //비동기 여부
+                    dataType: "JSON", 
+                    data: {
+                        accessToken:access
+                    },
+                    success: function(response) { 
+                        console.log(response);    
+                    }
+                
+                })
+            }
+        </script>
+    </body>
+    
+    </html>

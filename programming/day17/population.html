@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="../jquery-3.7.1.min.js"></script>
+		<link rel="stylesheet" href="../css/population.css" type="text/css">
+		<script type="text/javascript">	
+				//셀렉트선택시 페이지 이동
+				function move() {
+					let loginstatus = sessionStorage.getItem("loginstatus");
+					if(loginstatus==="true") {
+						let name = $("#Province option:selected").text();
+						const selectedValue = $("#Province option:selected").val();
+						if (selectedValue) {
+							window.location.href = "page1.html?province="+selectedValue+"&name="+name;
+						}
+					} else {
+						if ($("#Province").prop("selectedIndex") !== 0) {
+							alert("로그인을 해주세요");
+							// 선택 초기화
+							$("#Province").prop("selectedIndex", 0);
+						}
+					}
+				}
+				//로그인 시 창 띄우고 없애기
+				$(document).ready(function () {	
+					let loginstatus = sessionStorage.getItem("loginstatus");
+					if (loginstatus === "true") {
+						// 로그인 상태
+						$("#page1top").append(`
+							<input class="font3" type="button" id="logout" value="로그아웃">
+						`);
+						// 로그아웃 버튼 클릭 이벤트
+						$("#logout").on("click", function () {
+							sessionStorage.setItem("loginstatus", "false");
+							alert("로그아웃되었습니다.");
+							location.reload(); // 페이지 새로고침
+						});
+					} else {
+					// 로그아웃 상태
+					$("#page1top").append(`
+						<a href="login.html"><p class="font3" style="display: inline-block; margin-right: 10px;">로그인</p></a>
+						<a href="join.html"><p class="font2" style="display: inline-block;">회원가입</p></a>
+					`);
+					}
+				});
+		</script>	
+	</head>	
+	<body>	
+
+		<header>
+			<div id="page1top" class="mainpagetop">
+				<a href="population.html" class="font1">
+					<pre>Cheonan
+<span style="font-size: smaller;">education center</span>
+					</pre></a>
+				<a href="login.html">
+				<a href="" class="font4">HOME</a>
+				<select class="font5" onchange="move()" name="Province" id="Province" style="color: white;  border: none; background-color: rgb(103, 103, 103);">
+					<option value="">CITY</option>
+					<option value="31">경기도</option>
+					<option value="32">강원도</option>
+					<option value="33">충청도</option>
+					<option value="37">경상도</option>
+					<option value="35">전라도</option>
+				</select>
+			</div>
+			<div id="mainleft">
+				<pre>
+					<h1 style="color: red;">      SOUTH KOREA</h1><h2 style="color: blue;">          CITY</h2><h2> Population distribution map</h2>
+				</pre><br/><br/><br/><br/><br/><br/><br/>
+				<img src="../image/korea1.WEBP" style="width: 200px; height: 200px; position: absolute; ">
+				<img src="../image/korea2.WEBP" style="width: 200px; height: 200px; position: absolute;  left:220px">
+				<img src="../image/korea3.WEBP" style="width: 200px; height: 200px; position: absolute; left:440px">
+				<img src="../image/korea.jpg" style="width: 300px; height: 600px; position: absolute; top:180px; right : 50px ">
+			</div>
+			<br/>
+
+		</header>
+
+
+	</body>	
+</html> 

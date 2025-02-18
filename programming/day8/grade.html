@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script type="text/javascript">
+
+    function inputGrade(num) {
+        var grade = new Array();
+        for (var i = 0; i < num; i++) {
+            var input = prompt((i+1)+"번째 학생의 성적을 입력해주세요");
+            grade.push(input);
+        }
+        return grade;
+    }
+
+    function avgGrade(grade) {
+        
+        var sum=0;
+        for (var i = 0; i < grade.length; i++) {
+            sum += parseInt(grade[i]);
+        }
+        var avg = sum/grade.length;
+        return avg;
+    }
+
+    function highScore(grade) {
+        var highscore= parseInt(grade[0]);
+    for (var i = 0; i < grade.length; i++) {
+            if(highscore<=parseInt(grade[i])){
+                highscore = parseInt(grade[i])
+            }
+            }
+            return highscore;
+    }
+    function lowScore(grade) {
+        var lowscore= parseInt(grade[0]);
+    for (var i = 0; i < grade.length; i++) {
+            if(lowscore>=parseInt(grade[i])){
+                lowscore = parseInt(grade[i])
+            }
+            }
+            return lowscore;
+    }
+    var grade = inputGrade(6);
+    var avg = avgGrade(grade);
+    var highscore = highScore(grade);
+    var lowscore = lowScore(grade);
+    
+    document.write(grade.join()+"<br/>");
+    document.write("평균 :"+avg+"<br/>")
+    document.write("최고점수 :" +highscore+"<br/>")
+    document.write("최저점수 :" +lowscore+"<br/>")
+</script>
+<body>
+    <a href="zindex.html">link</a>
+</body>
+</html>

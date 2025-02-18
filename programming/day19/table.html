@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="table-container">
+        <h1>식단표 테이블 만들기</h1>
+    </div>
+
+    <script type="text/javascript">
+        var table = document.createElement("table");
+        var tr = document.createElement("tr");
+        var days = ["일", "월", "화", "수", "목", "금", "토"];
+        for (let i = 0; i < days.length; i++) {
+            let td = document.createElement("td");
+            td.innerText = days[i];
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+        var tr2 = document.createElement("tr");
+        var foods = ["쌀밥", "잡곡밥", "스파게티", "짜장면"];
+
+        let tdArray = [];
+        for (let i = 0; i < foods.length; i++) {
+            let td = document.createElement("td");
+            td.innerText = foods[i];
+
+            if (i === 0) td.colSpan = 2;
+            if (i === 1) td.colSpan = 3;
+
+            tr2.appendChild(td);
+            tdArray.push(td);
+        }
+
+        table.appendChild(tr2);
+
+        document.getElementById("table-container").appendChild(table);
+    </script>
+</body>
+</html>

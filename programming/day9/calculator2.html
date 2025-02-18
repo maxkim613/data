@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>서적 주문 양식</h2>
+    <p>주문서</p>
+    <br/><br/>
+
+    <form>
+        <table border="1">
+            <tr>
+                <th>책 제목</th>
+                <th>가격</th>
+                <th>수량</th>
+                <th>합계</th>
+            </tr>
+            <tr>
+                <td>멀티미디어 배움터2.0</td>
+                <td>25,000원</td>
+                <input type="hidden" id="price1" value="25000" name="price">
+                <td><input type="text" id="amount1" name="amount" value="0"></td>
+                <td><input type="text" id="sum1" name="sum" value="0"></td>
+            </tr>
+            <tr>
+                <td>모바일 멀티미디어</td>
+                <td>25,000원</td>
+                <input type="hidden" id="price2" value="27000" name="price">
+                <td><input type="text" id="amount2" name="amount" value="0"></td>
+                <td><input type="text" id="sum2" name="sum" value="0"></td>
+            </tr>
+            <tr>
+                <td>자바입문이론과실습</td>
+                <td>25,000원</td>
+                <input type="hidden" id="price3" value="27000" name="price">
+                <td><input type="text" id="amount3" name="amount" value="0"></td>
+                <td><input type="text" id="sum3" name="sum" value="0"></td>
+            </tr>
+            <tr>
+                <td>합 계</td>
+                <td></td>
+                <td><input type="text" id="totalamount" name="totalamount" value="0"></td>
+                <td><input type="text" id="totalsum" name="totalsum" value="0"></td>
+            </tr>
+        </table>
+        <br/>
+        <input type="button" value="합계 계산" id="totalSumCalc"/>
+        <input type="reset"/><br/><br/>
+        </form>    
+        <script type="text/javascript">
+            function totalSumCalc() {
+                var totalAmount =0;
+                var totalSum =0;
+        
+                var priceobjs = document.getElementsByName("price");
+                var amountobjs = document.getElementsByName("amount");
+                var sumobjs = document.getElementsByName("sum");
+        
+                for (var i = 0; i < priceobjs.length; i++) {
+                    sumobjs[i].value = parseInt(priceobjs[i].value)*parseInt(amountobjs[i].value);
+                    totalAmount += parseInt(amountobjs[i].value);
+                    totalSum += parseInt(priceobjs[i].value)
+                }
+                document.getElementById("totalamount").value = totalAmount;
+                document.getElementById("totalsum").value = totalSum;
+            }
+                document.getElementById("totalSumCalc").onclick = totalSumCalc;
+        </script>
+
+</body>
+</html>

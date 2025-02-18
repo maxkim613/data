@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .Delivery{
+            --selector-width: 4rem;
+            position: relative;;
+        }
+    </style>
+</head>
+<body style="background-color: black;">
+    <!-- 
+    1.주문 버튼을 누르면 주문서 입력 값 출력하는 DIV를 만들어 주세요.
+
+    2.위 예제의 태그들을 1번 이상 사용해 주세요.
+    text button radio checkbox select submit reset div
+    
+    -->
+    <div style="color: rgb(204, 204, 204); 
+                border: 5px solid rgb(24, 24, 24);
+                background-color: rgb(31, 31, 31); 
+                width: 500px; 
+                height: 600px;" >
+        <h3>상품주문서</h3>
+        <form method="post" action="">
+            주문자 성함 : <input type="text" id="name" placeholder="홍길동">
+            <br/>
+            주문 수량 : <input type="number" id="number" style="width: 40px;">
+            <br/>
+            상품 색상 : <input type="radio" name="color" value="red">red
+                        <input type="radio" name="color" value="green">green
+                        <input type="radio" name="color" value="blue">blue  
+            <br/>
+            추가 옵션 : <input type="checkbox" name="option" value="pack">포장
+                        <input type="checkbox" name="option" value="msgcard">메세지 카드 추가
+            <br/>
+            배송 방법 : <select name="deleivery" id="deleivery" size="1">
+                            <option value=""></option>
+                            <option value="parcel">택배</option>
+                            <option value="quick">퀵서비스</option>
+                            <option value="direct">직접수령</option>
+            </select>
+            <br/>
+            비고 :
+            <br/>
+            <textarea name="comments" id="comments" rows="4" cols="40"></textarea>
+            <br/>
+            <input type="button" value="제출" onclick="printValue()">
+            <input type="reset" onclick="reset()">
+            <input type="color">
+    
+            <div id="divarea">
+    
+            </div>
+        </form>
+    </div>
+    
+    <script type="text/javascript">
+        function reset() {
+            var divarea = document.getElementById("divarea");
+            divarea.innerHTML = null;
+        }
+        function printValue() {
+            var divarea = document.getElementById("divarea"); 
+                divarea.innerHTML = null;
+                divarea.innerHTML+="<h3>성함:"+document.getElementById("name").value+"</h3>";
+                divarea.innerHTML+="<h3>주문 수량:"+document.getElementById("number").value+"</h3>";
+                divarea.innerHTML+="<h3>색상:"+color()+"</h3>";
+                divarea.innerHTML+="<h3>추가옵션:"+adioption()+"</h3>";
+                divarea.innerHTML+="<h3>배송방법:"+delievery()+"</h3>";
+                divarea.innerHTML+="<h3>비고:"+document.getElementById("comments").value;+"</h3>";
+        }
+
+        function delievery() {
+                var deleivery = document.getElementById("deleivery"); 
+                var options = deleivery.options;
+                var values = "";
+                for (var i = 0; i < options.length; i++) {
+                    if(options[i].selected) {
+                        values+=","+options[i].value;
+                    }
+                }
+                if(values != "") {
+                    values = values.substring(1,values.length);
+                }
+                return values;
+            }
+            function color() {
+               var color = document.getElementsByName("color");  
+               var colorVal;
+               for (var i = 0; i < color.length; i++) {
+                 if(color[i].checked) {
+                     colorVal = color[i].value;
+                 }
+               }
+               return colorVal;
+         }
+            function adioption() {
+                var adioption = document.getElementsByName("option");  
+                var checkedop = "";
+                for (var i = 0; i < adioption.length; i++) {
+                    if(adioption[i].checked) {
+                        checkedop +=","+adioption[i].value;
+                    }
+                }
+                if(checkedop != "") {
+                    checkedop = checkedop.substring(1,checkedop.length);
+                }
+                return checkedop;
+            }
+        
+    </script>
+
+
+<a href="zindex.html">link</a>
+</body>
+</html>

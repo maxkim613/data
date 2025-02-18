@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script type="text/javascript">
+   
+   // 1~45
+   function randomNum(){
+        var num =0;
+        var numCheck = false;
+        for (var i = 0; !numCheck; i++) {
+            num = Math.round(Math.random()*100);
+            if(num>=1 && num<=45) {
+                numCheck =true;
+            }
+        }
+        return num;
+    }
+    // 비교
+    function numDupCheck(num,numArray){
+        var dupCheck = false;
+        for (var i = 0; i < numArray.length; i++) {
+            if(num == numArray[i]) {
+                dupCheck = true;
+            }
+        }
+        return dupCheck;
+    }
+
+    //로또 출력
+    function lotto(arn){
+        var numArray = new Array();
+        var num =0;
+        for (var i = 0; numArray.length < arn; i++) {
+        num = randomNum();
+        dupCheck = numDupCheck(num, numArray);
+        if(!dupCheck) {
+            numArray.push(num);
+        }
+    }
+    for (var j = 0; j < numArray.length; j++) {
+        document.write("numArray["+j+"] = "+numArray[j]);
+        document.write("<br/>");
+    }
+    }
+    lotto(6);
+    
+</script>
+<body>
+    <a href="zindex.html">link</a>
+</body>
+</html>

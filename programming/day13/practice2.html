@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>title</title>
+       
+    </head>
+    <body>
+        <h3>스토리지를 이용한 간단한 목록 작성</h3>
+          <div style="width:540px; height:45px; padding:8px; border:double">
+              이메일 주소 입력<br>
+              성명: <input type="text" size="10" id="name">  &nbsp;
+             이메일: <input type="text" size="30" id="email">
+                     &nbsp;<input type="button" value="추가" onclick="SaveItem()">
+          </div>
+          <p style="margin:10px">이메일 목록 보기</p>
+          <div style="background-color:#d0f0ff; width:540px; height:55px; padding:8px;">
+               성명선택: <select id="nameList" style="width:100px" onchange="viewContent()"></select>
+                    이메일: <span id="emailAddr">&nbsp;</span> <br><br>
+               <input type="button" value="삭제" onclick="RemoveItem()" style="margin-top:8px">
+               <input type="button" value="전체삭제" onclick="ClearAll()">
+           </div>
+
+       
+        <script type="text/javascript"> 
+                var localStorage = window.localStorage;               //로컬 스토리지
+                var sessionStorage = window.sessionStorage;           //세션 스토리지 모든창을 닫으면 데이타 사라짐
+                
+                var storage = sessionStorage;
+                
+                // setItem(키,값) 키 + 값으로 저장
+                // getItem(키) 키로 값가져오기
+                // removeItem(키) 키로 삭제
+                // clear()  전체 삭제
+
+                var itemList = document.getElementById("nameList");
+                var itemAddr = document.getElementById("emailAddr");
+                var u_name = document.getElementById("name");
+                var u_email = document.getElementById("email");
+            
+                function pageload() {   
+                    itemList.innerHTML = "";         // 목록 clear
+                    itemAddr.innerHTML = "";     // 스토리지의 데이터를 리스트에 추가
+                    for (var i = 0; i <= storage.length - 1; i++) {  // 로컬 스토리지
+                        var key = storage.key(i);
+                        itemList.options[itemList.options.length] = new Option(key, key);
+                    }
+
+                }
+
+                function SaveItem() {           // 스토리지에 저장
+                    storage.setItem(u_name.value, u_email.value);   
+                     pageload();     // 로컬 스토리지 
+                }
+
+                function RemoveItem() {         // 선택한 항목을 스토리지에서 삭제
+                    var option_key = itemList.options[itemList.selectedIndex].value;
+                    storage.removeItem(option_key);   pageload();         // 로컬 스토리지 
+                }
+
+                function ClearAll() {          // 스토리지의 데이터 모두 삭제
+                    storage.clear();   
+                    pageload();             // 로컬 스토리지
+                }
+                    
+                function viewContent() {       // 선택한 사람의 이메일 주소 보기
+                    var option_key = itemList.options[itemList.selectedIndex].value;
+                    itemAddr.innerHTML = storage.getItem(option_key);   // 로컬 스토리지
+                }
+        </script>
+    </body>
+   
+</html>

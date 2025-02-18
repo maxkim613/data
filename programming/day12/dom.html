@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>title</title>
+       
+    </head>
+    <body>
+        <h3>다양한 입력 폼</h3>
+        <form method="get">
+            성명: <input type="text" id="person" name="person" value=""/>
+                  <input type="button" value="입력 성명 메시지 보이기" onclick="clickPersonMsg(true);"><br/>
+
+            성별: <input type="radio" id="genderMale" name="gender" value="male"/>남성
+                  <input type="radio" id="genderFemale" name="gender" value="female"/>여성<br/>
+                  <input type="button" value="성별 속성값보기" onclick="clickGender(true);"><br/>
+            
+            직업: <select name="job" id="job" size="4" multiple>
+                    <option value="1">학생</option> 
+                    <option value="2">회사원</option>
+                    <option value="3">공무원</option> 
+                    <option value="4">기타</option>
+                 </select>
+                 <input type="button" value="직업 속성값보기" onclick="clickJob(true);"><br/>
+            <p> 
+                구입희망분야(복수선택 가능)
+                <br/>
+                - 분야: 
+                <input type="checkbox" name="books" id="booksComputer" value="computer"/>컴퓨터
+                <input type="checkbox" name="books" id="booksEconomy" value="economy"/>경제
+                <input type="checkbox" name="books" id="booksCommon" value="common"/>상식
+                <br/>
+                <input type="button" value="책 속성값보기" onclick="clickBooks(true);"><br/>
+                비고: 
+                <br/>
+                <textarea name="comments" id="comments" rows="4" cols="40"></textarea>
+                <input type="button" value="비고값 보기" onclick="clickComments(true);"><br/>
+
+            </p> 
+            <input type="button" value="신청" onclick="clickJoin();"/>
+            <input type="reset" value="취소"/>
+            <div id="rDiv">
+
+            </div>
+        </form> 
+     
+        <script type="text/javascript"> 
+
+            //신청버튼 클릭 
+            function clickJoin() {
+                var rDiv = document.getElementById("rDiv"); 
+                rDiv.innerHTML+="<h3>성명:"+clickPersonMsg(false)+"</h3>";
+                rDiv.innerHTML+="<h3>성별:"+clickGender(false)+"</h3>";
+                rDiv.innerHTML+="<h3>직업:"+clickJob(false)+"</h3>";
+                rDiv.innerHTML+="<h3>구입희망분야(복수선택 가능):"+clickBooks(false)+"</h3>";
+                rDiv.innerHTML+="<h3>비고:"+clickComments(false)+"</h3>";
+            }
+
+
+            //비고 입력값을 보여주는 함수
+            function clickComments(checkAlert) {
+                
+                //비고 입력 필드 객체 가져오기
+                var comments = document.getElementById("comments");  
+                if(checkAlert)alert(comments.value);
+                
+                return comments.value;
+            }
+
+            //책 속성값 보기
+            function clickBooks(checkAlert) {
+                
+                //책 필드 객체 가져오기 넘겨주는객체가 배열형태에 각각의 객체
+                var books = document.getElementsByName("books");  
+                
+                //체크 된 체크 박스 태그에 value 값을 찾는 로직 
+                //체크된 체크 박스 태그 value 값을 넣을 변수
+                var booksVals = "";
+                for (var i = 0; i < books.length; i++) {
+                    //체크된것일경우 true
+                    if(books[i].checked) {
+                        //체크된 것의 value값을 변수 넣어줌
+                        booksVals +=","+books[i].value;
+                    }
+                }
+
+                //공백이 아닐경우
+                if(booksVals != "") {
+                    booksVals = booksVals.substring(1,booksVals.length);
+                }
+
+                if(checkAlert)alert(booksVals);
+                return booksVals;
+
+            }
+
+            //직업 속성값 보기
+            function clickJob(checkAlert) {
+                //직업 콤보 필드 객체 가져오기
+                var job = document.getElementById("job"); 
+                // alert(job.value);
+
+                //여러개를 선택한경우
+                var options = job.options;
+                var values = "";
+                for (var i = 0; i < options.length; i++) {
+                    if(options[i].selected) {
+                        values+=","+options[i].value;
+                    }
+                }
+
+                //공백이 아닐경우
+                if(values != "") {
+                    values = values.substring(1,values.length);
+                }
+
+                if(checkAlert)alert(values);
+                return values;
+
+            }
+           
+            //성별 속성값 보기
+            function clickGender(checkAlert) {
+               
+                  //성별 필드 객체 가져오기 넘겨주는객체가 배열형태에 각각의 객체
+                  var gender = document.getElementsByName("gender");  
+
+                  //체크 된 라디오 태그에 value 값을 찾는 로직 
+                  //체크된 라디오태그 value 값을 넣을 변수
+                  var genderVal;
+                  for (var i = 0; i < gender.length; i++) {
+                    //체크된것일경우 true
+                    if(gender[i].checked) {
+                        //체크된 것의 value값을 변수 넣어줌
+                        genderVal = gender[i].value;
+                    }
+                  }
+
+                  //변수값을 메세지로 보여줌
+                  if(checkAlert)alert(genderVal);
+                  return genderVal;
+                //   var gender = document.getElementsByName("gender");  
+                //   //자바스크립트로 첫번째요소 임의 체크
+                //   gender[0].checked = true;
+
+            }
+
+
+            //성명 입력값을 보여주는 함수
+            function clickPersonMsg(checkAlert) {
+                
+                //성명 입력 필드 객체 가져오기
+                var person = document.getElementById("person");  
+                if(checkAlert)alert(person.value);
+                
+                return person.value;
+                // //속성값 변경
+                // person.id = "person2";
+                // //가져온 객체의 value 속성값 보여주기
+                // alert("성명 변경ID :"+person.id);
+                
+                // var personBe = document.getElementById("person");  
+                //alert("성명 객체:"+personBe);
+                
+            }
+
+        </script>
+    </body>
+   
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../jquery-3.7.1.min.js"></script>
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse; /* 테두리를 한 줄로 합침 */
+            font-size: 20px;
+        }
+        th, td {
+            border: 1px solid black; /* 테두리를 선처럼 */
+            text-align: center;
+            height: 50px;
+
+        }
+        th:hover, td:hover {
+            background-color: rgb(202, 201, 201);
+        }
+
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+        let thtml ="&nbsp&nbsp&nbsp";
+        let surplus=3;
+        for (let i = 1; i <= 12; i++) {
+            thtml += "<h3>"+i+"월</h3><br/>";
+            thtml +="<table border=1 style='text-align: center;'><tr><th style='width: 70px; color:red'>일</th><th style='width: 70px;''>월</th><th style='width: 70px;'>화</th><th style='width: 70px;'>수</th><th style='width: 70px;'>목</th><th style='width: 70px;'>금</th><th style='color: blue; width: 70px;'>토</th></tr>";
+            thtml +="<tr>";  
+            let datelength=31;    
+            if (i === 2) {
+                datelength = 28; // 2월은 28일
+            } else if ((i <= 7 && i % 2 === 0) || (i > 7 && i % 2 === 1)) {
+                datelength = 30; // 4, 6, 9, 11월은 30일
+            }
+                for (let vacancy = 0; vacancy < surplus; vacancy++) {
+                           thtml += "<td></td>";
+                        }
+                for (let date = 1; date <= datelength; date++) {
+                    if((date+surplus)%7==1) {
+                        thtml += "<td style='color:red;'>"+date+"</td>";
+                    } else if((date+surplus)%7==0) {
+                        thtml += "<td style='color:blue;'>"+date+"</td>";
+                    } else {
+                        thtml += "<td>"+date+"</td>";
+                    }
+                    if((date+surplus)%7==0) {
+                        thtml += "</tr><tr>";
+                    }
+                    if(date==31) {
+                        surplus= (date+surplus)%7;
+                    }
+                }
+                thtml += "</table><br/>";   
+        }
+        $("#table").html(thtml);
+        })
+    </script>
+    <div id="table">
+    </div>
+</body>
+</html>

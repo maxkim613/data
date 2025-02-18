@@ -1,0 +1,11 @@
+.mel1{font-weight: bold; text-decoration: underline;}
+.mel2{font-weight: bold; color: rgb(89, 126, 126); text-decoration: underline;}
+.mel3{font-weight: bold; text-align: center; color: rgb(82, 180, 126); text-decoration: underline;}
+.mel4{font-weight: bold; f color: rgb(89, 126, 126); text-decoration: underline;}
+.mel5{font-weight: bold; color: rgb(89, 126, 126); text-decoration: underline;}
+.mel6{font-weight: bold; color: rgb(89, 126, 126); text-decoration: underline;}
+.mel7{font-weight: bold; color: rgb(89, 126, 126); text-decoration: underline;}
+.first{background-color: aquamarine;}
+.second{background-image: url(logo.jpg) ;}
+.books{table-layout: auto; width: 70% ;}
+.booksfixed{table-layout: fixed; width: 700px; height: 400px;}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+	<html>
+	  	<head>
+	    	<script type="text/javascript" src="../jquery-3.7.1.min.js"></script>	<!--jquery 주소변경-->
+	    	<link rel="stylesheet" href="../css/population.css" type="text/css">
+			<script type="text/javascript">	
+     var accessTaken = 'none';													
+		var errCnt=0;						
+     getAccessToken();												
+     function getAccessToken(){												
+     	$.ajax({																												
+     		type:'GET', 																											
+     		url: 'https://sgisapi.kostat.go.kr/OpenAPI3/auth/authentication.json',													
+     		data:{																													
+     		consumer_key : 'a676ea7fec064ca087d9',	//서비스 ID																				
+     		consumer_secret : '883be0d869e04b9386f0',	// 보안 Key																	
+     		},																														
+     		success:function(data){																									
+     			errCnt = 0;																									
+     			accessToken = data.result.accessToken;																									
+     			getPopulation();												
+     		},																													
+     		error:function(data) {																									
+     		}																														
+     	});																		
+     }												
+     function getPopulation(){												
+        var year;	
+		var province;									
+     	$.ajax({															
+     		type:'GET', 																											
+     		url: 'https://sgisapi.kostat.go.kr/OpenAPI3/stats/searchpopulation.json',														
+     		data:{															
+     			accessToken : accessToken,												
+     			year : 2018,	//값확인하고싶으면 https://sgis.kostat.go.kr/developer/html/newOpenApi/api/dataApi/census.html#searchPopulation
+				adm_cd : "35",
+				low_search : 1
+ 										
+     		},																														
+     		success:function(data){																									
+     			let strin = JSON.stringify(data);
+				 console.log(data)
+				 console.log(strin)																			
+     		},																														
+     		error:function(data) {																									
+     		}																														
+     	});																		
+   }					
+			function move() {
+				let name = $("#Province option:selected").val();
+				const selectedValue = $("#Province option:selected").val();
+				if (selectedValue) {
+					window.location.href = "page1.html?province="+areadecide()+"&name="+name;
+				}
+			}
+			function areadecide() {
+				if($("#Province option:selected").val()=="경기도") {
+					province = "31";
+				}
+				else if($("#Province option:selected").val()=="강원도") {
+					province = "32";
+				}
+				else if($("#Province option:selected").val()=="충청도") {
+					province = "33";
+				}
+				else if($("#Province option:selected").val()=="경상도") {
+					province = "37";
+				}
+				else if($("#Province option:selected").val()=="전라도") {
+					province = "35";
+				}
+				return province;
+			}		
+	    	</script>	
+			
+	  	</head>	
+	  	<body>	
+
+			<header>
+				<div id="page1top" class="mainpagetop">
+					<a href="population.html" class="font1">
+						<pre>Cheonan
+<span style="font-size: smaller;">education center</span>
+						</pre></a>
+					
+					<a href="login.html"><p class="font3">로그인 |</p></a><a href="join.html"><p class="font2">회원가입</p></a>
+					<a href="" class="font4">HOME</a>
+					<select class="font5" onchange="move()" name="Province" id="Province" style="color: white;  border: none; background-color: rgb(103, 103, 103);">
+						<option value="">CITY</option>
+						<option value="경기도">경기도</option>
+						<option value="강원도">강원도</option>
+						<option value="충청도">충청도</option>
+						<option value="경상도">경상도</option>
+						<option value="전라도">전라도</option>
+					</select>
+				</div>
+				<br/>
+
+			</header>
+
+			<a href="zindex.html">link</a>
+
+	  	</body>	
+	</html> 

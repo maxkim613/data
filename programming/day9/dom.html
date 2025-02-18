@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<form>
+    추천도서: <input id="recommend" type="text" size="50">
+</form>
+<script type="text/javascript">
+    dom = document.getElementById("recommend");
+    dom.value = "컴퓨터와 IT기술의 이해";
+</script>
+
+<form>
+    <input id="username" type="text" value="Name of User">
+</form>
+<script type="text/javascript">
+    var dom = document.getElementById("username");
+    alert(dom.value)
+    var newValue = prompt("Type new value of the username")
+    dom.value = newValue;
+</script>
+
+
+<body>
+        
+    <p> &lt;p&gt; 첫 번째 태그</p>
+    <p> &lt;p&gt; 두 번째 태그</p>
+    <p class="myclass">myclass</p>
+    <input type="button" value="내용 바꾸기" onclick="changecontent();"/>
+    <script type="text/javascript">
+        function changecontent() {
+            var p_elements = document.getElementsByTagName("p");
+            var myclass_elements = document.getElementsByClassName("myclass");
+            p_elements[0].innerText = "<p> 첫 번째 요소 내용 바꾸기";
+            p_elements[1].innerText = "<p> 두 번째 요소 내용 바꾸기";
+            myclass_elements[0].innerText = "myclass 내용 바꾸기";
+        }
+    </script>
+
+    <a href="zindex.html">link</a>
+</body>
+</html>

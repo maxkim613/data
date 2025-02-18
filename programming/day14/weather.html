@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>title</title>
+        <script type="text/javascript" src="../jquery-3.7.1.min.js"></script>
+         
+    </head>
+    <body>
+        <button class="button" id="btn" type="button">현재 날씨는?</button>
+      
+        <div id="div1" name="div1">
+            
+        </div>
+    
+        <script type="text/javascript">
+            $(document).ready(function () { 
+
+                var button = $('#btn').on("click", 
+                    function() {
+                        navigator.geolocation.getCurrentPosition(success);
+                    } 
+                );
+
+                function success(position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+                    getWeather(latitude, longitude);
+                }
+
+                function fail () {
+                    alert("좌표를 받아올 수 없음");
+                }
+
+                function getWeather (lat, lon) {
+                    $.ajax({ 
+                        url: 'https://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon+'&appid=6aefd9409da91e63a6fc798f064b775b&units=metric&lang=kr',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(response) { 
+                            console.log("success");    
+                            console.log(response);  
+                            var json = response;
+                            var temperature = json.main.temp;
+                            var place = json.name;
+                            var description = json.weather[0].description;
+                            $('#div1').html($('#div1').html()+"기온 : "+temperature+"<br/>");
+                            $('#div1').html($('#div1').html()+"위치 : "+place+"<br/>");
+                            $('#div1').html($('#div1').html()+"설명 : "+description+"<br/>");
+                        },
+                        error : function(xhr, ajaxSettings, thrownError) {
+                            console.log("error");
+                            console.log(xhr);
+                        }
+                    });
+                   
+                }
+
+
+                
+            });
+        </script>
+    </body>
+   
+</html>

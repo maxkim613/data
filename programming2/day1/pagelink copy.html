@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var leng;
+        makeStar(10);
+        
+        //정삼각작은거
+        function upStar(leng) {
+            for (let i = 0; i < leng; i++) {
+                for (let j = 0; j < 3*(leng)-i; j++) {
+                    document.write("&nbsp")
+                    }
+                for (let j = 0; j < 2*i+1; j++) {
+                document.write("*")
+                }
+                document.write("<br/>")   
+                }
+            }
+        //역삼각큰거 총 길이 6y-3 
+        function midupStar(leng) {
+            for (let i = 0; i < leng; i++) {
+                for (let j = 0; j < i; j++) {//+j
+                    document.write("&nbsp")
+                    }
+                for (let k = 0; k < 6*leng-3-2*i; k++) {//-k
+                document.write("*")
+                }
+                document.write("<br/>")   
+                }
+            }
+
+        //정삼각큰거
+
+        //역삼각작은거
+        //makestar
+        function makeStar(leng) {
+            upStar(leng);
+            midupStar(leng);
+        }
+    </script>
+</body>
+</html>

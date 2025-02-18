@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse; /* 테두리를 한 줄로 합침 */
+        }
+    </style>
+</head>
+<body>
+
+    당첨번호
+    <input type="text" id="num1" name="color" style="width: 20px; border: none;">
+    <input type="text" id="num2" name="color" style="width: 20px; border: none;">
+    <input type="text" id="num3" name="color" style="width: 20px; border: none;">
+    <input type="text" id="num4" name="color" style="width: 20px; border: none;">
+    <input type="text" id="num5" name="color" style="width: 20px; border: none;"> 
+    <input type="text" id="num6" name="color" style="width: 20px; border: none;">
+    <br/>
+
+
+    참가자수를 입력해주세요 : 
+    <input type="text" id="parti" style="width: 30px;" >
+    <input type="button" onclick="winner(gentable())" value="generate">
+    <table border="1" id="table" style="text-align: center;">
+        <tr><th>참가자번호</th><th>1번호</th><th>2번호</th><th>3번호</th><th>4번호</th><th>5번호</th><th>6번호</th></tr>
+    </table>
+    <div id="windis">
+        
+    </div>
+    <script type="text/javascript">
+
+        document.getElementById("num1").value = Math.round(Math.random()*45)+1;
+        document.getElementById("num2").value = Math.round(Math.random()*45)+1;
+        document.getElementById("num3").value = Math.round(Math.random()*45)+1;
+        document.getElementById("num4").value = Math.round(Math.random()*45)+1;
+        document.getElementById("num5").value = Math.round(Math.random()*45)+1;
+        document.getElementById("num6").value = Math.round(Math.random()*45)+1;
+
+
+        var lottonum = new Array()
+        function randomNum() {
+            return Math.round(Math.random()*45)+1;
+        }
+        function numDupCheck(num,numArray,check){
+        return !numArray.includes(num);
+        }
+        function numberarray() {
+            for (let i = 0; i < parseInt(document.getElementById("parti").value); i++) {
+                lottonum[i] =new Array();
+                for (let j = 0; lottonum[i].length<6; j++) {
+                    let arrval = randomNum();
+                    if(numDupCheck(arrval,lottonum[i])) {
+                        lottonum[i].push(arrval);
+                    }
+                }
+            }
+        }
+        function gentable() {
+            numberarray();
+            var count=0;
+            var win =0;
+            var winarray = new Array();
+            var table = document.getElementById("table");
+            for (let i = 0; i < parseInt(document.getElementById("parti").value); i++) {
+                let row = document.createElement("tr");
+                let column = document.createElement("td");
+                column.innerText = i +1;
+                row.appendChild(column);
+                count =0;
+                for (let j = 0; j < 6; j++) {
+                    let numcolumn = document.createElement("td")
+                    for (let k = 0; k < 6; k++) {
+                        if(lottonum[i][j]==document.getElementsByName("color")[k].value) {
+                        numcolumn.innerText = lottonum[i][j];
+                        numcolumn.style = "color: red;"
+                        count++;
+                            if(count == 6) {
+                                win = i+1;
+                                winarray.push(win);
+                            }
+                        }                    
+                        else {
+                            numcolumn.innerText = lottonum[i][j];
+                        }                        
+                    }        
+                    row.appendChild(numcolumn)                       
+                }
+
+                table.appendChild(row)   
+            }
+            return winarray;
+        }
+        // arraynumber랑 숫자랑 비교
+        function winner(winarray) {
+            var windis = document.getElementById("windis");
+            console.log(winarray.length)
+            windis.innerHTML= "당첨자는 ";
+            if(winarray.length>0) {
+                for (let i = 0; i < winarray.length; i++) {
+                windis.innerHTML += winarray[i]+"번 "
+            }     
+            }
+            windis.innerHTML += "입니다."
+        }
+    </script>
+<a href="zindex.html">link</a>
+</body>
+</html>

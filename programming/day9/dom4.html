@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        // create button object and insert
+        function buttonAppend() {
+            var btn = document.createElement("button");
+            btn.innerText = document.getElementById("buttonName").value;
+            btn.onclick = removeSelf;
+            document.getElementById("buttonArea").appendChild(btn);
+        }
+        // Get rid of first child
+        function deletefirst() {
+            //find first child
+            var firstChild = document.getElementById("buttonArea").firstChild;
+                //check first child is correct
+                if(firstChild) {
+                    document.getElementById("buttonArea").removeChild(firstChild);
+                }
+        }
+        //Remove itself
+        function removeSelf(event) {
+            var btn = event.target;
+            document.getElementById("buttonArea").removeChild(btn);
+        }
+    </script>
+</head>
+<body>
+
+    <h3>DOM create and delete example</h3>
+    When you click the created button, it will be disappeared.
+    <br/>
+    <input type="text" id="buttonName"><button onclick="buttonAppend();">Create Button</button>
+    <button onclick="deletefirst();">Delete Firstchild</button>
+    <div id="buttonArea" style="border: solid; height: 300px;"></div>
+
+
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <a href="zindex.html">link</a>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="zindex.html">link</a>
+</body>
+<script type="text/javascript">
+    var grade="";
+    var choice= prompt("성적을 입력해 주세요","1-100");
+    var num = parseInt(choice);
+    if(num>="80" && num<="100")
+    grade = "A";
+    else if(num>="60" && num<"80")
+    grade = "B";
+    else if(num>="40" && num<"60")
+    grade = "C";
+    else if(num>="20" && num<"40")
+    grade = "D";
+    else if(num>="0" && num<"20")
+    grade = "E";
+    else{
+        alert("점수가 입력범위를 벗어났습니다.")
+    grade ="";
+    }
+    console.log(""+grade);
+    console.log(""+choice);
+    console.log(choice>="0");
+    console.log(choice<"80");
+    console.log(typeof(+choice));
+</script>
+</html>

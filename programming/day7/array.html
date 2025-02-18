@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script type="text/javascript">
+    var book_arr = new Array("멀티미디어 배움터2.0","생능출판사","최윤철,임순범",25000,442);
+    var book_arr = ["멀티미디어 배움터2.0","생능출판사","최윤철,임순범",25000,442];
+    
+    var arr100 = new Array(100);
+
+    function printValue(num,value) {
+        document.write("book_arr["+num+"] = "+value+"<br/>")
+    }
+
+    // for (var num = 0; num < book_arr.length; num++) {
+    //     printValue(num,book_arr[num])
+        
+    // }
+    // document.write("<br/>")
+    // var arr1 = book_arr.reverse();
+    // for (var num = 0; num < arr1.length; num++) {
+    //     printValue(num,arr1[num])
+        
+    // }
+    // document.write("<br/>")
+    // var arrs = book_arr.sort();
+    // for (var num = 0; num < arrs.length; num++) {
+    //     printValue(num,arrs[num])
+    // }
+    // document.write("<br/>")
+
+    // for (let i = 0; i < 100; i++) {
+    //     arr100[i] = i;
+    //     printValue(i,arr100[i]);
+    // }
+    // document.write("<br/>")
+    // var arr100s = arr100.sort();
+    // for (let i = 0; i < 100; i++) {
+    //     arr100s[i] = i;
+    //     printValue(i,arr100s[i]);
+    // }
+
+    // arr100sl = arr100.slice(20,40);
+    // for (var num = 0; num < arr100sl.length; num++) {
+    //     printValue(num,arr100sl[num])
+    // }
+
+    var arr10 = new Array(10);
+    var arr10r = new Array(10);
+    var arr5char = new Array("사과","귤","포도","복숭아","참외");
+
+    // 배열 정순 출력
+    for (var num = 0; num < arr10.length; num++) {
+        arr10[num] = [num+1];
+        printValue(num,arr10[num]);
+    }
+    document.write("<br/>")
+    
+    // 배열 역순 출력
+
+    for (var num = 0; num < arr10r.length; num++) {
+        arr10r[num] = [(arr10r.length-num)];
+        printValue(num,arr10r[num]);
+    }
+    document.write("<br/>")
+
+    // 배열 문자열 출력
+    printValue(1,arr5char[1]);
+    document.write("<br/>")
+</script>
+
+<body>
+    <a href="zindex.html">link</a>
+</body>
+</html>

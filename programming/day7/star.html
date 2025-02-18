@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="./zindex.html">link</a>
+</body>
+<script type="text/javascript">
+    document.write("<br/><br/><br/><br/><br/>");
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    // 별위
+    function printPushPyramid(num){
+        for (var i = 0; i < num; i++) {
+            for (var j = i; j < 3*num; j++) {
+                document.write("&nbsp");
+            }
+            for (var k = 2*(num-i); k <= 2*num; k++) {
+                document.write("*");
+            }
+            document.write("<br/>")
+        }
+    }
+
+    //별 중간위
+    function printCutPyramid(num){
+        for (var i = 0; i < num+1; i++) {
+            for (var j = num-i; j < num; j++) {
+                document.write("&nbsp;");
+            }
+            for (var k = 2*i; k < 6*num; k++) {
+                document.write("*");
+            }            
+            document.write("<br/>")
+        } 
+    }
+    // 별 중간아래
+    function printCutReversePyramid(num){
+        for (var i = 0; i < num; i++) {
+        for (var k = i+1; k<num; k++) {
+                document.write("&nbsp");
+            }   
+        for (var j = (2*num-2*i); j <= 6*num; j++) {
+            document.write("*");    
+        }
+        document.write("<br/>")
+    }
+    }
+    //별 아래
+    function printPushReversePyramid(num){
+        for (var i = 0; i < num; i++) {
+        for (var j = num-i; j <= 3*num; j++) {
+            document.write("&nbsp");    
+        }
+        for (var k = 2*i+1; k<2*num; k++) {
+                document.write("*");
+            }   
+        document.write("<br/>")
+    }
+    }
+    //별 합침
+    function printStar(num){
+    printPushPyramid(num)
+    printCutPyramid(num)
+    printCutReversePyramid(num)
+    printPushReversePyramid(num)
+    }
+
+    printStar(6)
+    
+</script>
+
+</html>
+
+ 

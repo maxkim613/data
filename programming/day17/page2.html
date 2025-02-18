@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="../css/population.css" type="text/css">
+   <script type="text/javascript" src="../jquery-3.7.1.min.js"></script>   <!--jquery 주소변경-->
+   <link rel="stylesheet" href="../css/population.css" type="text/css">
+
+   <script type="text/javascript">                                             
+     function getAccessToken(){                                    
+        jQuery.ajax({                                                                                    
+           type:'GET',                                                                                  
+           url: 'https://sgisapi.kostat.go.kr/OpenAPI3/auth/authentication.json',                                       
+           data:{                                                                                       
+           consumer_key : 'a676ea7fec064ca087d9',   //서비스 ID                                                            
+           consumer_secret : '883be0d869e04b9386f0',   // 보안 Key                                                   
+           },                                                                                          
+           success:function(data){                                                                           
+              errCnt = 0;                                                                           
+              accessToken = data.result.accessToken;                                                                           
+              getPopulation();                                    
+           },                                                                                       
+           error:function(data) {                                                                           
+           }                                                                                          
+        });                                                      
+     }   
+                            
+     function getPopulation(){      
+      const params = new URLSearchParams(window.location.search);
+      const province = params.get("province");                        
+      //연령별 인구수
+      $.each([...Array(10).keys()], function(index) { // 0부터 9까지 순회
+         $.ajax({
+            type: 'GET',
+            url: 'https://sgisapi.kostat.go.kr/OpenAPI3/stats/searchpopulation.json',
+            data: {
+                  accessToken: accessToken,
+                  year: 2023,
+                  age_type: index + 30, // age_type 값 계산
+                  adm_cd: province
+            },
+            success: function(data) {
+                  // id="age0", id="age1", ...에 값 삽입
+                  $(`#age${index}`).text(data.result[0].population);
+            },
+            error: function(data) {
+                  console.error("API 호출 실패:", data);
+            }
+         });
+      });
+      //성별
+      $.each([1, 2], function(index, value) { // gender 값으로 1, 2를 사용
+         $.ajax({
+            type: 'GET',
+            url: 'https://sgisapi.kostat.go.kr/OpenAPI3/stats/searchpopulation.json',
+            data: {
+                  accessToken: accessToken,
+                  year: 2023,
+                  gender: value, // value는 gender 값
+                  adm_cd: province
+            },
+            success: function(data) {
+                  var strin = JSON.stringify(data);
+                  console.log(data);
+
+                  // id="gender0", id="gender1"에 값 삽입
+                  $(`#gender${index}`).text(data.result[0].population);
+            },
+            error: function(data) {
+                  console.error("API 호출 실패:", data);
+            }
+         });
+      });             
+      for (let i = 0; i < 5; i++) {
+         $.ajax({                                             
+           type:'GET',                                                                                  
+           url: 'https://sgisapi.kostat.go.kr/OpenAPI3/stats/searchpopulation.json',                                          
+           data:{                                             
+              accessToken : accessToken,                                    
+              year : 2020+i,
+            adm_cd : province            
+           },                                                                                    
+           success:function(data){                                                                           
+              var strin = JSON.stringify(data);
+            console.log(data)
+                $(`#year${i}`).text(data.result[0].population);
+				if(i>=1) {
+				  let y1=parseInt($(`#year${i-1}`).text());
+                  let y2=parseInt($(`#year${i}`).text());
+                  let increase = ((y2 - y1) / y1) * 100;
+				  $(`#increase${i-1}`).text(increase.toFixed(2) + "%");
+				}
+         },
+           error:function(data) {                                                                           
+           }                                                                                    
+        });
+      }
+   }
+         $(document).ready(function() {
+			getAccessToken(); 
+		}) ;      
+   </script>
+</head>
+<body>
+   <header>
+      <div id="page1top" class="mainpagetop">
+         <a href="population.html" class="font1">
+            <pre>Cheonan
+<span style="font-size: smaller;">education center</span>
+            </pre></a>
+         
+         <a href="population.html" class="font4">HOME</a>
+      </div>
+      <br/>
+   </header>
+   <article>
+      <div id="lefttop" style="position: absolute; top: 200px;">
+         <table border="1" style="text-align: center;">
+            <caption><p>연령별 인구수</p></caption>
+            <thead>
+               <tr style="width: 250px; position: relative;">
+                  <th rowspan="2" style="height: 100px;">인구수</th>
+                  <th style="width: 60px;">0-10</th>
+                  <th style="width: 60px;">11-20</th>
+                  <th style="width: 60px;">21-30</th>
+                  <th style="width: 60px;">31-40</th>
+                  <th style="width: 60px;">41-50</th>
+                  <th style="width: 60px;">51-60</th>
+                  <th style="width: 60px;">61-70</th>
+                  <th style="width: 60px;">71-80</th>
+                  <th style="width: 60px;">81-90</th>
+                  <th style="width: 60px;">91-100</th>
+               </tr>
+               <tr style="width: 150px; position: relative;">
+                  <td id="age0">#</td>
+                  <td id="age1">#</td>
+                  <td id="age2">#</td>
+                  <td id="age3">#</td>
+                  <td id="age4">#</td>
+                  <td id="age5">#</td>
+                  <td id="age6">#</td>
+                  <td id="age7">#</td>
+                  <td id="age8">#</td>
+                  <td id="age9">#</td>
+               </tr>
+            </thead>
+         </table>
+      
+      </div>
+      <div id="leftbottom" style="position: absolute; top: 400px;">
+         <table border="1">
+            <caption><p>남성, 여성 인구수</p></caption>
+            <thead>
+               <tr style="text-align: center;">
+                  <th style="width: 100px;  height: 50px;">남성</th>
+                  <td style="width: 150px; " id="gender0">#</td>
+               </tr>
+               <tr style="text-align: center;">
+                  <th style="  height: 50px;">여성</th>
+                  <td id="gender1">#</td>
+               </tr>
+            </thead>
+         </table>
+   
+      </div>   
+      <div id="right" style="position: absolute; right: 100px;">
+         <table id="year" border="1" style="text-align: center;">
+            <caption><p>년도별 인구수</p></caption>
+            <thead>
+               <tr>
+                  <th style="width: 100px;">년도</th><th style="width: 100px;">인구수</th><th style="width: 100px;">증감율</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>2020</td>
+                  <td id="year0">?</td>
+                  <td id="increase0">#</td>
+               </tr>
+               <tr>
+                  <td>2021</td>
+                  <td id="year1">#</td>
+                  <td id="increase1">#</td>
+               </tr>
+               <tr>
+                  <td>2022</td>
+                  <td id="year2">#</td>
+                  <td id="increase2">#</td>
+               </tr>
+               <tr>
+                  <td>2023</td>
+                  <td id="year3">#</td>
+                  <td id="increase3">-0.33%</td>
+               </tr>
+            </tbody>
+         </table>
+   
+      </div>
+   </article>
+
+</body>
+</html>

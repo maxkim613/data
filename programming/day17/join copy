@@ -1,0 +1,22 @@
+회원가입
+1. 정보 입력
+2. 완료 버튼 누를 시 정보 저장
+3. 정보를 세션 스토리지에 저장
+4. 완료 버튼 누르면 메인페이지로 이동
+5. alert으로 회원가입이 완료되었습니다. 
+
+로그인
+1. idpw
+2. 메인페이지로
+3. show hidden으로 로그인|회원가입 이나 ???님 환영합니다 둘중하나 띄우기
+4. 로그인시 값 logvalue을 만들어서 그값이 트루면 로그인글씨 지우고 환영합니다 false면 로그인 회원가입창 유지
+
+각 창마도 logvalue를 체크하고 트루면 이용가능 false면 메인페이지로
+
+
+<select name="countryCode" 
+id="Select99" 
+required="" 
+autocomplete="shipping country" 
+class="ZHJU6 _1k3449n4 _1k3449n2 _1fragemt8 q5Ecv IWR5K tu1VS">
+<option value="US">United States</option>

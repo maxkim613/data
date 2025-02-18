@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>title</title>
+        <script type="text/javascript" src="../jquery-3.7.1.min.js"></script>
+    </head>
+    <body style="background-color:rgb(248, 248, 248) ;">
+        <form>
+            <div id="div1">
+                <h3>Varient Input Form</h3><br/>
+                Name: <input type="text" id="person" name="person" value=""/>
+                      <input type="button" id="personbtn" value="Display input name msg"><br/>
+                Sex: <input type="radio" name="sex" id="male" value="male">male</input>
+                      <input type="radio" name="sex" id="female" value="female">female</input>
+                      <input type="button" id="sexbtn" value="Display input sex">
+                      <br/>
+                Job: <select name="job" id="job" size="4" multiple>
+                        <option value="Student">Student</option>
+                        <option value="Saleryman">Saleryman</option>
+                        <option value="Public officer">Public officer</option>
+                        <option value="etc">etc</option>
+                     </select>
+                     <input type="button" id="jobbtn" value="Display Job Value">
+                     <br/>
+                Wishlist(you can choose more than one)<br/>
+                - Field: <input type="checkbox" name="field" value="Computer" id="field1">Computer</input>
+                         <input type="checkbox" name="field" value="Economy" id="field1">Economy</input>
+                         <input type="checkbox" name="field" value="Common Sense" id="field1">Common Sense</input>
+                         <br/>
+                <input type="button" id="fieldbtn" value="Display Field Value">
+                <br/>
+                - note: <br/>
+                <textarea name="note" id="note" rows="4" cols="40"></textarea><br/>
+                <input type="button" id="notebtn" value="Display note value"><br/>
+                <input type="submit" value="submit"><input type="reset" value="reset">
+            </div>
+        </form>
+        <a href="zindex.html" style="color: rgb(31, 31, 31);">link</a>
+       
+     <br/>
+        <script type="text/javascript"> 
+        $(document).ready(function () {
+            $("#personbtn").on("click",
+            function () {
+                alert($("#person").val());
+            })
+            $("#sexbtn").on("click",
+            function () {
+                if($("[name=sex]:eq(0)").is(":checked")) {
+                    alert($("#male").val());}
+                else if($("[name=sex]:eq(1)").is(":checked")) {
+                    alert($("#female").val());}
+                else {
+                    alert("No option selected");}
+            })
+            $("#jobbtn").on("click",
+            function () {
+                var array = [];
+                $("#job option:selected").each(function(index,element){
+                    array.push($(element).val());
+                }); 
+                alert(array.join(", "))
+            })
+            $("#fieldbtn").on("click",
+            function () {
+                var array = [];
+                $("[name='field']:checked").each(function(index,element){
+                    array.push($(element).val());
+                }); 
+                alert(array.join(", "))
+            })
+            $("#notebtn").on("click",
+            function () {
+                alert($("#note").val());
+            })
+            
+        });
+
+        
+        </script>
+    </body>
+   
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>practice3</title>
+        <script type="text/javascript" src="../jquery-3.7.1.min.js"></script>
+        <style>
+            .divS {background-color: aqua;}
+        </style>
+    </head>
+    <body>
+        <h3>다양한 입력 폼</h3>
+        <form method="get" action="form_app.js">
+            성명: <input type="text" id="person" name="person"/><br/>
+                  <input type="button" value="입력 성명 메시지 보이기" id="btn1"><br/>
+            
+            성별: <input type="radio" id="genderMale" name="gender" value="male"/>남성
+                  <input type="radio" id="genderFemale" name="gender" value="female"/>여성<br/>
+                  <input type="button" value="입력 성별 메시지 보이기" id="btn2"><br/>
+
+            직업: <select name="job" id="job" size="1">
+                    <option value="1">학생</option> 
+                    <option value="2">회사원</option>
+                    <option value="3">공무원</option> 
+                    <option value="4">기타</option>
+                 </select>
+                 <input type="button" value="입력 직업 메시지 보이기" id="btn3"><br/>
+            <p> 
+                구입희망분야(복수선택 가능)
+                <br/>
+                - 분야: 
+                <input type="checkbox" name="books" id="booksComputer" value="computer"/>컴퓨터
+                <input type="checkbox" name="books" id="booksEconomy" value="economy"/>경제
+                <input type="checkbox" name="books" id="booksCommon" value="common"/>상식
+
+                <input type="button" value="입력 책 메시지 보이기" id="btn4"><br/>
+
+                <br/>
+                비고: 
+                <br/>
+                <textarea name="comments" id="comments" rows="4" cols="40" ></textarea>
+                <input type="button" value="입력 비고 메시지 보이기" id="btn5"><br/>
+            </p> 
+            <input type="button" id="sub" value="신청"/>
+            <input type="reset" value="취소"/>
+            <div id="rDiv" style=" width: 300px; height: 300px;">
+
+            </div>
+            <ul class="listClass">
+                <li>후라이드 치킨</li>
+                <li>양념 치킨</li>
+                <li>허니콤보</li>
+            </ul>
+        </form> 
+
+        <script type="text/javascript">
+            //제이쿼리 범위 함수
+            $(document).ready(function () { 
+                //버튼 이벤트
+                $("#btn1").click(clickPerson);
+                $("#btn2").click(clickGender);
+                $("#btn3").click(clickJob);
+                $("#btn4").click(clickBooks);
+                $("#btn5").click(clickComments);
+                $("#sub").click(clickJoin);
+               
+
+                //신청버튼 클릭 
+                function clickJoin() {
+                    var rDiv = $("#rDiv"); 
+                    rDiv.html(rDiv.html()+"<h3>성명:"+clickPerson()+"</h3>");
+                    rDiv.html(rDiv.html()+"<h3>성별:"+clickGender()+"</h3>");
+                    rDiv.html(rDiv.html()+"<h3>직업:"+clickJob()+"</h3>");
+                    rDiv.html(rDiv.html()+"<h3>구입희망분야(복수선택 가능):"+clickBooks()+"</h3>");
+                    rDiv.html(rDiv.html()+"<h3>비고:"+clickComments()+"</h3>");
+                }
+
+                //비고 입력값을 보여주는 함수
+                function clickComments(e) {  
+                    //비고 입력 필드 객체 가져오기
+                    var comments = $("#comments");  
+                    if(e)alert(comments.val()); 
+                    return comments.val();
+                }
+
+                 //책 속성값 보기
+                function clickBooks(e) {
+                    var books = [];
+                    $("[name=books]:checked").each(
+                        function(index, item) {
+                            books[index] = $(item).val();
+                        }
+                    );
+                    if(e)alert(books); 
+                    return books;
+                }
+
+                 //직업 속성값 보기
+                function clickJob(e) {
+                    var job = $("#job option:selected");
+                    if(e)alert(job.val()); 
+                    return job.val();
+                }
+
+                //성별 속성값 보기
+                function clickGender(e) {
+                    //이름 gender 체크가 된것
+                    var gender = $("[name=gender]:checked");
+                    if(e)alert(gender.val()); 
+                    return gender.val();
+                }
+
+                //성명 속성값보기
+                function clickPerson(e) {
+                    var person = $("#person");
+                    //성명 입력 필드 객체 가져오기
+                    if(e)alert(person.val());
+                    return person.val();
+                }
+
+
+            });
+
+          
+        </script>
+    </body>
+   
+</html>

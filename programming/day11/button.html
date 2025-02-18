@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        count =0;
+        // create button object and insert
+        function buttonAppend() {
+            var btn = document.createElement("button");
+            btn.innerText = document.getElementById("buttonName").value;
+            btn.onclick = removeSelf;
+            if(count<20) {
+                document.getElementById("buttonArea").appendChild(btn);
+                count++;
+            }
+            btn.id = parseInt(count);
+            return count;
+        }
+        // Get rid of first child
+        function deletefirst() {
+            //find first child
+            var firstChild = document.getElementById("buttonArea").firstChild;
+                //check first child is correct
+                if(firstChild) {
+                    document.getElementById("buttonArea").removeChild(firstChild);
+                    count--
+                }
+        }
+        //Remove itself
+        function removeSelf(event) {
+            var btn = event.target;
+            document.getElementById("buttonArea").removeChild(btn);
+            count--
+        }
+        function colorChange() {
+            document.getElementById(Math.round(Math.random()*count+1)).style = "background-color: blue;"
+        }
+    </script>
+</head>
+<body>
+
+    <h3>DOM create and delete example</h3>
+    When you click the created button, it will be disappeared.
+    <br/>
+    <input type="text" id="buttonName"><button onclick="buttonAppend();">Create Button</button>
+    <button onclick="deletefirst();">Delete Firstchild</button>
+    <button onclick="colorChange();">Color Change</button>
+    <div id="buttonArea" style="border: solid; height: 150px; width: 193px;"></div>
+
+
+    <br/><br/><br/><br/><br/><br/><br/>
+    <a href="zindex.html">link</a>
+</body>
+</html>

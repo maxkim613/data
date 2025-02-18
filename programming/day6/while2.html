@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script type="text/javascript">
+    document.write("<br/><br/><br/><br/>");
+    var limit;
+
+    var vacfirst =3;
+   for(var mon =1;mon<=12;mon++)
+   {
+    document.write(" "+mon+"월");
+    document.write("<br/>");
+    if(mon==2)
+   {
+        limit=28;
+   }
+   else if(mon<=7)
+   {
+    if(mon%2==1)
+    limit=31;
+    else
+    limit=30;
+   }
+    else
+   {
+    if(mon%2==1)
+    limit=30;
+    else
+    limit=31;
+   }
+   // *넣기
+   for(var vac=0;vac<vacfirst;vac++)
+   {
+    document.write(" "+"*"+" ")
+   }
+   //일 넣기
+    for (var day =1;day<=limit;day++)
+   {
+    document.write(" "+day+" ")
+    if((day+vacfirst)%7==0) // 일 줄계행
+   {
+    document.write("<br/>")
+   }
+   }
+   vacfirst = (vacfirst + limit)%7;
+   document.write("<br/><br/>")
+   }
+   //3,6,6,2,4,0,2,5,1,3,6,1
+</script>
+
+
+<body>
+    <br/><br/><br/><br/><br/><br/>
+    <a href="zindex.html">link</a>
+</body>
+</html>

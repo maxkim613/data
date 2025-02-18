@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var count = 0;
+      function buttonappend() {
+        var btn = document.createElement("button");
+        btn.innerText = document.getElementById("buttonName").value;
+        btn.onclick = removeSelf;
+        if (count < 20) {
+          document.getElementById("buttonArea").appendChild(btn);
+          count++;
+          btn.id = count;
+          btn.style = "border : none";
+        }
+        if (count == 20) {
+          alert("stop")
+        }
+      }
+      function deleteFirst() {
+        var firstChild = document.getElementById("buttonArea").firstChild;
+        if (firstChild) {
+          document.getElementById("buttonArea").removeChild(firstChild);
+          count--;
+        }
+      }
+      function removeSelf(event) {
+        var btn = event.target;
+        if (count >= 0) {
+          document.getElementById("buttonArea").removeChild(btn);
+          count--;
+        }
+      }
+      function colorChange() {
+        let num;
+        num = document.getElementById(Math.ceil(Math.random() * count));
+        num.style.backgroundColor =
+          "rgb(" +
+          Math.round(Math.random() * 255) + "," +
+          Math.round(Math.random() * 255) + "," +
+          Math.round(Math.random() * 255) + ")";
+        console.log(num);
+      }
+    </script>
+    <h3>DOM 생성 및 삭제 예제</h3>
+    생성된 버튼 클릭 시 삭제됩니다
+    <br />
+    <input type="text" id="buttonName" /><button onclick="buttonappend();">
+      버튼 요서 생성
+    </button>
+    <button onclick="deleteFirst();">firstChild 요소 삭제</button>
+    <button onclick="colorChange();">색깔바꾸기</button>
+    <div id="buttonArea" style="border: solid; height: 300px"></div>
+    <a href="pagelink.html">link</a>
+  </body>
+</html>

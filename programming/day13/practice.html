@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=678f22df8118e765016b976856970de1&libraries=clusterer,services&autoload=false"></script>
+</head>
+<body>
+    <div id="map" style="width: 600px; height: 300px";></div>
+
+    <script type="text/javascript">
+        kakao.maps.load(function () {
+            var container = document.getElementById('map');
+            var options = {
+                center: new window.kakao.maps.LatLng(36.8077,127.1495),
+                level :3
+            };
+            var map = new window.kakao.maps.Map(container,options);
+        });
+    </script>
+
+<h3>단발성 위치정보 요청하기</h3>
+<button onclick="getMyLocation();">위치정보 확인</button>
+<div id="display">위치: </div>    
+
+<script type="text/javascript"> 
+       function getMyLocation() { 
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function (myPosition) {
+
+                        //위도
+                        var latitude = myPosition.coords.latitude;
+
+                        //경도
+                        var longitude = myPosition.coords.longitude;
+
+                        var date = new Date(myPosition.timestamp);
+                        //일시 협정 세계 표준시(UTC)를 사용하여 문자열로 변환된 일자를 반환한다
+                        var parsedDate = date.toUTCString();
+
+                        document.getElementById("display").innerHTML = '위치: 일시 '+parsedDate
+                                +'에 위도 ' + latitude + ', 경도 ' + longitude + '에 있습니다.';
+                    }
+                );
+            } else {
+                alert("지오로케이션이 지원되지 않습니다.");
+            }
+        }
+
+        // function myCallback(myPosition) {
+
+        //     //위도
+        //     var latitude = myPosition.coords.latitude;
+            
+        //     //경도
+        //     var longitude = myPosition.coords.longitude;
+            
+        //     var date = new Date(myPosition.timestamp);
+        //     //일시
+        //     var parsedDate = date.toUTCString();
+
+        //     document.getElementById("display").innerHTML = '위치: 일시 '+parsedDate
+        //             +'에 위도 ' + latitude + ', 경도 ' + longitude + '에 있습니다.';
+        // }
+
+</script>
+<a href="zindex.html">link</a>
+</body>
+</html>

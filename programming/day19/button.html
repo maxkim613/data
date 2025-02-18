@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function buttonappend() {
+            var btn = document.createElement("button");
+            btn.innerText = document.getElementById("buttonName").value;
+            btn.onclick = removeSelf;
+            document.getElementById("buttonArea").appendChild(btn);
+        }
+        function deleteFirst() {
+            var firstChild = document.getElementById("buttonArea").firstChild;
+            if(firstChild) {
+                document.getElementById("buttonArea").removeChild(firstChild);
+            }
+        }
+        function removeSelf(event) {
+            var btn = event.target;
+            document.getElementById("buttonArea").removeChild(btn);
+        }
+    </script>
+    <h3> DOM 생성 및 삭제 예제</h3>
+    생성된 버튼 클릭 시 삭제됩니다
+    <br/>
+    <input type="text" id="buttonName"><button onclick="buttonappend();">버튼 요서 생성</button>
+    <button onclick="deleteFirst();">firstChild 요소 삭제</button>
+    <div id="buttonArea" style="border: solid; height: 300px;"></div>
+    <a href="pagelink.html">link</a>
+</body>
+</html>

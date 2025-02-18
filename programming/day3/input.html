@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="hidden" name="varient" value="hidden">
+        ID : <input type="text" name="in1" value="initial value"> 
+        <br/>
+        Password: <input type="password" name="pw1" value="123">
+        <br/>
+        <textarea name="taxa1" cols="100" rows="3" >텍스트 영역에 표시되는 초기문장</textarea>
+        <br/>
+        <div>
+            1:<input type="radio" name="rad" value="1" checked>
+            2:<input type="radio" name="rad" value="2">
+            3:<input type="radio" name="rad" value="3">
+            4:<input type="radio" name="rad" value="4">
+            5:<input type="radio" name="rad" value="5">    
+        </div>
+        <br/>
+        <div>
+            1:<input type="checkbox" name="rad" value="1" checked>
+            2:<input type="checkbox" name="rad" value="2">
+            3:<input type="checkbox" name="rad" value="3">
+            4:<input type="checkbox" name="rad" value="4">
+            5:<input type="checkbox" name="rad" value="5">    
+        </div>
+        <br/>
+
+        <select name="sel1" size="1">
+            <option value="">선택</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <br/>
+        <input type="submit" value="전 송"> 
+        <input type="reset" value="reset">
+        <input type="button" value="일반버튼" onclick="alert('입력값확인')">
+        <input type="image" src="../image/html logo.png" width="50px" height="50px" name="" id="">
+        <input type="file" name="file1" >
+
+        <div>
+            <label for="ra11">1</label>
+            <input type="radio" name="ra1" id="ra11" value="1" checked>
+            <label for="ra12">2</label>
+            <input type="radio" name="ra1" id="ra12" value="2">
+            <label for="ra13">3</label>
+            <input type="radio" name="ra1" id="ra13" value="3">
+            <label for="ra14">4</label>
+            <input type="radio" name="ra1" id="ra14" value="4">
+            <label for="ra15">5</label>
+            <input type="radio" name="ra1" id="ra15" value="5">    
+        </div>
+
+        <div>
+            E-mail : 
+            <input type="email" name="email1" placeholder="asd@asd.com">
+            <br/>
+            URL : 
+            <input type="url" name="url1" placeholder="abc.com">
+            <br/>
+            Tel : 
+            <input type="tel" name="tel1" placeholder="00-000-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}">
+            <br/>
+            Search :
+            <input type="search" name="search1" placeholder="검색어를 입력해주세요.">
+            <br/>
+        </div>
+        <div>
+            날 짜 :
+            <input type="date" name="date1" >
+            <br/>
+            월 :
+            <input type="month" name="month1" >
+            <br/>
+            주 :
+            <input type="week" name="week1" >
+            <br/>
+            시 간 :
+            <input type="time" name="time1" >
+            <br/>
+            일 시간 :
+            <input type="datetime" name="datetime1" >
+            <br/>
+            현지 일시 :
+            <input type="datetime-local" name="datetime-local1" >
+            <br/>
+            색 상 :
+            <input type="color" name="color1" >
+            <br/>
+            숫 자 :
+            <input type="number" name="number1" >
+            <br/>
+            범 위 :
+            <input type="range" name="range1" >
+            <br/>
+        </div>
+        <div>
+            <input type="text" list="titles" name="book">
+            <datalist id="titles">
+                <option value="멀티미디어배움터" label="30,000">
+                <option value="인터넷배움터" label="34,000">
+                <option value="컴퓨터와 IT 기술의 이해" label="28,000">
+            </datalist>
+        </div>
+    </form>
+    <a href="./zindex.html">link</a>
+</body>
+</html>

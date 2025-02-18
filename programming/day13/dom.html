@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>title</title>
+       
+    </head>
+    <body>
+        <div id="dragsrc" style="border: 5px solid black; width: 300px; height: 300px;">
+            <div id="div1" draggable="true" style="visibility:visible; background-color: red; width: 100px; height: 100px; left:80px; top:80px; position: absolute;" >
+
+            </div>
+            <div id="div2" draggable="true" style="visibility:visible; background-color:  aqua; width: 100px; height: 100px; left:180px; top:180px; position: absolute;" >
+
+            </div>
+        </div>
+        <div id='droptarget' style="border: 5px solid black; width: 300px; height: 300px; overflow: auto; ">
+
+        </div>
+
+       
+        <script type="text/javascript"> 
+            // dragstart : 드래그 시작 시 발생
+            // drag : 드래그 도중 지속적으로 발생
+            // dragend : 드롭 여부와 관계없이 드래그 종료시 발생
+
+            //드레그 영역
+            var src = document.getElementById("dragsrc");
+            //드레그 시작시 옴길 데이타 셋팅
+            src.ondragstart = function(e) {
+                e.dataTransfer.setData("text", e.target.id);
+            }
+
+            // dragenter : 드롭 영역에 진입할 때
+            // dragover : 드롭 영역 위에 있을 때 
+            // dragleave : 드롭 영역에서 벗어날 때
+            // drop : 드래그 요소를 드롭 영역에 놓을 때
+
+            //드롭 영역
+            var target = document.getElementById("droptarget");
+
+            //드롭 영역 위에 있을 때 이벤트 막기
+            target.ondragover = function(e) {	// 드롭 영역 도중 이벤트 핸들러 함수
+                e.preventDefault();           // 기존의 이벤트 발생 정지
+                e.target.style.background = 'lightgrey'; 
+            }
+
+            //드롭시 가져온 데이타 가지고 화면에 표시
+            target.ondrop = function(e) {	// 드롭 이벤트 핸들러 함수
+                e.preventDefault();           // 기존의 이벤트 발생 정지
+                e.target.style.background = 'transparent';
+                //가져온 데이타 꺼네기
+                var data = e.dataTransfer.getData("text");
+                //이벤트 타겟에 누적
+                target.innerHTML += "drag ID : "+data+"<br/>";
+            }
+        </script>
+        
+    <br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/>
+    <a href="zindex.html">link</a>
+    </body>
+   
+</html>

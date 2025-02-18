@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교보문고 대한민국 최고의 도서쇼핑몰</title>
+    <style type="text/css">
+        .join {
+            color: darkgray;
+            display: inline-block;
+            padding: 6px;
+            line-height: 18px;
+            vertical-align: top;
+        }
+        .home { 
+            z-index: 2; 
+            background-image: url(../image/교보.JPG); 
+            position: absolute; top: 20px; left: 20px; width: 191px; height: 70px;
+        }
+        .main { 
+            z-index: 2; 
+            background-image: url(../image/main.jpg); 
+            position: relative; top: 200px; left: 20px; width: 890px; height: 380px;
+            
+        }
+        .search { 
+            z-index: 1; 
+            line-height: 22px;
+            font-size: 14px;
+            border: 1px solid;
+            width: 100%;
+            height: 100%;
+        }
+        .sersel {
+            display: inline-block;
+        }
+        .zin1{z-index: 1;}
+        .zin2{z-index: 2;}
+        .zin3{z-index: 3;}
+        .zin4{z-index: 4;}
+
+    </style>
+</head>
+<body>
+    <header>
+        <a href="webs.html">
+            <div class="home">
+            </div>
+        </a>
+        <form>
+            <select align = center
+            class="sersel" 
+            style=" position: relative; top: 71px; left: 280px; height: 40px; " >
+                <option value="TOT">통합검색</option>
+                <option value="KBO">교보문고</option>
+                <option value="EBK">ebook</option>
+                <option value="SAM">sam</option>
+                <option value="HTS">핫트랙스</option>
+            </select>
+            <input
+            class="search" 
+            type="search" 
+            style="position: relative; top: 72px; left: 272px; width: 500px; height: 40px;" 
+            placeholder="우리가 알고 있는'실패'의 개념을 바꾸다! 실패를 재정의하는 새해의 필독서">
+        </form>
+        <div align = right>
+            <a href="./join.html" class="join">회원가입</a>
+            <a href="" class="join">로그인</a>
+            <a href="" class="join">주문배송</a>
+            <a href="" class="join">매장안내</a>
+        </div>
+    </header>
+    <nav>
+        <img  src="../image/main.jpg" style=" position: absolute ; top: 200px; left: 180px;">
+    </nav>
+    <article align = center style="position: relative; top: 600px;">
+        <h3>해외 번역 도서</h3>
+        <section>
+            <a href="../image/book11.JPG" target="if1"><img src="../image/book1.jpg" width="150px" ></a>
+            <a href="../image/book22.JPG" target="if1"><img src="../image/book2.jpg" width="150px" ></a>
+            <a href="../image/book33.JPG" target="if1"><img src="../image/book3.jpg" width="150px" ></a>
+            <a href="../image/book44.JPG" target="if1"><img src="../image/book4.jpg" width="150px" ></a>
+            <a href="../image/book55.JPG" target="if1"><img src="../image/book5.jpg" width="150px" ></a>
+        </section>
+        <section>
+            <iframe src="" width="700" height="700" frameborder = "1" name="if1"></iframe>
+        </section>
+    </article>
+    <aside>
+    </aside>
+    <footer>
+        <a href="zindex.html" style="position: relative; top: 700px;">link</a>
+    </footer>
+</body>
+</html>

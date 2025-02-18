@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+	<html>
+	  	<head>
+	    	<script type="text/javascript" src="../jquery-3.7.1.min.js"></script>	<!--jquery 주소변경-->
+	    	<link rel="stylesheet" href="../css/population.css" type="text/css">
+			<script type="text/javascript">	
+			 $(document).ready(function () {
+				let id = localStorage.getItem("id");
+				let pw = localStorage.getItem("pw");
+				$("#loginbtn").click(login);
+				function login() {
+					let loginstatus = false;
+					if($("#idarea").val()==id&&$("#pwarea").val()==pw){
+						loginstatus = true;
+						sessionStorage.setItem("loginstatus",loginstatus)
+						window.location.href = "population.html";
+						alert("로그인 되었습니다.")
+					} else {
+						alert("id나 password가 일치하지 않습니다.")
+					}
+				}
+			 });
+	    	</script>	
+	  	</head>	
+	  	<body>	
+
+			<header>
+				<div id="page1top" class="mainpagetop">
+					<a href="population.html" class="font1">
+						<pre>Cheonan
+<span style="font-size: smaller;">education center</span>
+						</pre></a>
+				</div>
+				<br/>
+			</header>
+			<nav>
+				<div class="login">
+					<p style="text-align: center; color: white; font-size: 30px; margin: 0; padding: 3px; font-weight: bold;">Cheonan</p>
+					<p style="text-align: center; color: white; font-size: 20px; margin: 0;">education center</p>
+					<input type="text" class="idtext" id="idarea" placeholder="Id">
+					<input type="password" class="pwtext" id="pwarea" placeholder="password">
+					<input type="button" class="loginbtn" id="loginbtn" value="로그인">
+				</div>
+			</nav>
+	  	</body>	
+	</html> 

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+	<html>
+	  	<head>
+	    	<script type="text/javascript" src="../jquery-3.7.1.min.js"></script>	<!--jquery 주소변경-->
+	    	<link rel="stylesheet" href="./population.css" type="text/css">
+			<script type="text/javascript">	
+     var accessTaken = 'none';													
+		var errCnt=0;						
+     getAccessToken();												
+     function getAccessToken(){												
+     	jQuery.ajax({																												
+     		type:'GET', 																											
+     		url: 'https://sgisapi.kostat.go.kr/OpenAPI3/auth/authentication.json',													
+     		data:{																													
+     		consumer_key : 'a676ea7fec064ca087d9',	//서비스 ID																				
+     		consumer_secret : '883be0d869e04b9386f0',	// 보안 Key																	
+     		},																														
+     		success:function(data){																									
+     			errCnt = 0;																									
+     			accessToken = data.result.accessToken;													
+     			alert(accessToken);												
+     			getPopulation();												
+     		},																													
+     		error:function(data) {																									
+     		}																														
+     	});																		
+     }												
+     function getPopulation(){												
+
+        var year;										
+     	jQuery.ajax({															
+     		type:'GET', 																											
+     		url: 'https://sgisapi.kostat.go.kr/OpenAPI3/stats/searchpopulation.json',														
+     		data:{															
+     			accessToken : accessToken,												
+     			year : 2018,	//값확인하고싶으면 https://sgis.kostat.go.kr/developer/html/newOpenApi/api/dataApi/census.html#searchPopulation
+                age_type : "02"
+ 										
+     		},																														
+     		success:function(data){																									
+     			console.log(data)																				
+     		},																														
+     		error:function(data) {																									
+     		}																														
+     	});																		
+   }															
+	    	</script>	
+	  	</head>	
+	  	<body>	
+	    	<div id="page1top" class="mainpagetop">
+				sdfsdf
+			</div>
+			<br/>	
+			<a href="zindex.html">link</a>
+	  	</body>	
+	</html> 

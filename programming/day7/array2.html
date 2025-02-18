@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script type="text/javascript">
+    
+
+    // function printValue(num1,num2,arrnum) {
+    //     document.write("doublearr10["+num1+"]["+num2+"] = "+arrnum+"<br/>")
+    // }
+    // var arram=2;
+    // var doublearr10 = new Array(arram);
+    // var value = 0;
+    // for (let i = 0; i < arram; i++) {
+    //     doublearr10[i] = new Array(arram);
+    // }
+    // for (var num1 = 0; num1 < arram; num1++) {
+    //     for (var num2 =0; num2 < arram;num2++){
+    //     value++; 
+    //     doublearr10[num1][num2] = value;
+    //     printValue(num1,num2,doublearr10[num1][num2]);
+    // }
+    // }
+
+    // var doubleex = [
+    //     ["a","b"],
+    //     ["c","d"],
+    //     ["e","f"],
+    //     ["g","h"],
+    //     ["i","j"]
+    // ];
+
+    document.write("<table border = 1><th style=\"background-color: rgba(98, 88, 233);\">이름</th><th style=\"background-color: rgba(98, 88, 233);\">전화번호</th><th style=\"background-color: rgba(98, 88, 233);\">이메일</th><th style=\"background-color: rgba(98, 88, 233);\">우편번호</th><th style=\"background-color: rgba(98, 88, 233);\">주소</th><th style=\"background-color: rgba(98, 88, 233);\">상세주소</th>")
+    function printTable(name,tel,email,pos,add,detail) {
+        document.write("<tr><td>홍길동"+name+"</td><td>010-123-"+tel+"</td><td>abc"+email+"@nate.com</td><td>0"+pos+"</td><td>서울시 강동구 둔촌동 "+add+"번지</td><td>"+detail+"01호</td></tr>");
+    }
+    var num=15;
+    for (let i = 0; i < num; i++) {
+        if(i==0){
+            name =""
+        }
+        else {var name = i}    
+        var tel = 4567 +i;
+        var email = 1+i;
+        var pos = i+ 5051;
+        var add = i +1;
+        var detail = i+1;
+        printTable(name,tel,email,pos,add,detail);
+    }
+
+    document.write("</table>")
+
+</script>
+<body>
+    <a href="zindex.html">link</a>
+</body>
+</html>

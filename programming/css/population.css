@@ -1,0 +1,119 @@
+.mainpagetop {
+        background-color: rgb(103, 103, 103);
+        color: white;
+        display: inline-block;
+        height: 150px;
+        width: 100%;
+        vertical-align: top;
+    }
+        .home
+        { 
+            z-index: 2; 
+            position: absolute; top: 20px; left: 20px; width: 191px; height: 70px;
+        }
+        .font1{
+            font-size: 30px; 
+            position: absolute;
+            top: 20px; 
+            left: 50px;
+            color: white;
+            font-weight: bold;
+        }
+        .font2{
+            font-size: 20px; 
+            position: absolute;
+            top: 20px;
+            right: 50px;
+            color: white;
+            font-weight: bold;
+        }
+        .font3{
+            font-size: 20px; 
+            position: absolute;
+            top: 20px;
+            right: 140px;
+            color: white;
+            font-weight: bold;
+            background-color: rgb(103, 103, 103);
+            border: 0;
+        }
+        .font4{
+            font-size: 20px; 
+            position: absolute;
+            top: 120px;
+            left: 530px;
+            color: white;
+            font-weight: bold;
+        }
+        .font5{
+            font-size: 20px; 
+            position: absolute;
+            top: 123px;
+            left: 600px;
+            color: white;
+            font-weight: bold;
+        }
+        a {
+            text-decoration: none;
+        }
+        /* login page */
+        .login {
+            background-color: rgb(103, 103, 103); 
+            width: 400px; 
+            height: 400px; 
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 30%;
+            left: 35%;
+            border-radius: 10px;
+        }
+        .idtext {
+            width: 300px;
+            height: 40px;
+            left: 10%;
+            top: 120px;
+            position: absolute;
+            border-radius: 10px;
+            border: 0;
+            font-size: 18px;
+        }
+        .idtext:hover {
+            background-color: rgb(187, 185, 185);
+        }
+        .pwtext {
+            width: 300px;
+            height: 40px;
+            left: 10%;
+            top: 170px;
+            position: absolute;
+            border-radius: 10px;
+            border: 0;
+            font-size: 18px;
+        }
+        .pwtext:hover {
+            background-color: rgb(187, 185, 185);
+        }
+        .loginbtn {
+            width: 304px;
+            height: 40px;
+            left: 10%;
+            top: 220px;
+            background-color: rgb(66, 64, 64);
+            position: absolute;
+            border-radius: 10px;
+            border: 0;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .loginbtn:hover {
+            background-color: rgb(187, 185, 185);
+        }
+
+        
+        .zin0{z-index: 1}
+        .zin1{z-index: 2}
+        .zin2{z-index: 3}
+        .zin3{z-index: 4}
+        .zin4{z-index: 5}

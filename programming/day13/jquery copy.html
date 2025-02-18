@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../jquery-3.7.1.min.js"></script>
+    <style>
+        input[type="button"]{
+            background-color: white;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <div id="div1">
+            <h3>Varient Input Form</h3>
+        </div>
+        <br/>
+        Name: 
+        <input type="text" id="name">
+        <input type="button" value="Display input name msg" id="namebtn">
+        <br/>
+        Sex:
+        <input type="radio" value="male" name="sex">male</input>
+        <input type="radio" value="female" name="sex">female</input>
+        <input type="button" value="Display input sex" id="sexbtn">
+    </form>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#namebtn").on("click",
+                function() {
+                    alert($("#name").val());
+                }
+            )
+            $("#sexbtn").on("click",
+                function() {
+                    alert($())
+                }
+            )
+        })
+    </script>
+</body>
+</html>

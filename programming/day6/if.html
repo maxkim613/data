@@ -1,0 +1,46 @@
+num<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="./zindex.html">link</a>
+</body>
+<script type="text/javascript">
+    var stunum= prompt("학번을 입력해주세요."); // 학번 입력 변수
+    var minsunum ="2020"; // 민수 학번 변수
+    var minsuname = "박민수";
+    var grade;//등급 매기는 변수
+    var minsuscore ="88";//민수 점수 변수
+    var scorenum; // 등급을 매기기 위한 점수 변수
+    var stuname;
+
+    if(stunum == minsunum) //학생번호가 민수번호랑 같을 때
+    {
+        scorenum = parseInt(minsuscore);//등급을 매기는 점수 변수에 민수 점수변수를 넣어준다
+        stuname = minsuname;//학생 이름에 민수 이름을 넣어준다
+    } 
+    // 등급 매기기 if문
+    if(scorenum>="80" && scorenum<="100") 
+    grade = "A";
+    else if(scorenum>="60" && scorenum<"80")
+    grade = "B";
+    else if(scorenum>="40" && scorenum<"60")
+    grade = "C";
+    else if(scorenum>="20" && scorenum<"40")
+    grade = "D";
+    else if(scorenum>="0" && scorenum<"20")
+    grade = "E";
+    else
+    {
+        alert("점수가 입력범위를 벗어났습니다.")
+    grade ="";
+    }
+    document.write("<br/>학번 : " + stunum + "<br/>")
+    document.write("이름 : " + stuname + "<br/>")
+    document.write("점수 : " + scorenum + "<br/>")
+    document.write("등급 : " + grade + "<br/>")
+</script>
+</html>

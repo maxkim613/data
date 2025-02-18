@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="zindex.html">link</a>
+</body>
+<script type="text/javascript">
+    var book1 = "1:컴퓨터와 IT기술의 이해[개정판-2판]";
+    var book2 = "2:소셜미디어의 이해와 활용";
+    var book3 = "3:멀티미디어 배움터 2.0";
+
+    var book_list = book1 +"\n" + book2 + "\n" +book3;
+    var choice = prompt("책 번호를 입력하세요...\n" + book_list,"1");
+    var title;
+
+    switch(parseInt(choice))
+    {
+    case 1:
+    title = book1;
+    document.write(title);
+    break;
+    case 2:
+    title = book2;
+    document.write(title);
+    break;
+    case 3:
+    title = book3;
+    document.write(title);3
+    break;
+    default:
+    alert("리스트에 없는 책을 선택하셨습니다.");
+    title ="";
+    }
+    console.log(""+title)
+
+</script>
+</html>

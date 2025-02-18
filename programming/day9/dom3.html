@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="zindex.html">link</a>
+
+    <p id="text" style="font-size: 12px;">마우스 커서를 올리면 글자 크기가 커집니다. 클릭하면 색상이 바뀝니다.</p>
+
+    <script type="text/javascript">
+        function largefont() {
+            document.getElementById("text").style.fontSize = "24px";
+        }
+        function normalfont() {
+            document.getElementById("text").style.fontSize = "12px";
+        }
+        function changeColor() {
+            var r = Math.round(Math.random()*255);
+            var g = Math.round(Math.random()*255);
+            var b = Math.round(Math.random()*255);
+            document.getElementById("text").style.color = "rgb("+r+","+g+","+b+")";
+        }
+        // when mouse curser is over
+        document.getElementById("text").onmouseover = largefont;
+        // when mouse curser is out of range
+        document.getElementById("text").onmouseout = normalfont;
+        // when click
+        document.getElementById("text").onclick = changeColor;
+
+    </script>
+
+</body>
+</html>

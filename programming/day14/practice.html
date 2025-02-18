@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>practice</title>
+        <style>
+            .divS {
+                color: aqua;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript" src="../jquery-3.7.1.min.js"></script>
+        <div id="div1" name="div1">
+
+        </div>
+        <div id="div2" name="div1">
+
+        </div>
+        <ul>
+            <li>리스트 항목 1</li>
+            <li>리스트 항목 2</li>
+            <li>리스트 항목 3</li>
+            <li>리스트 항목 4</li>
+            <li>리스트 항목 5</li>
+        </ul>
+        <input type="button" id="btn1" value="text click button">
+        <script type="text/javascript">
+            //document.querySelector("div.user-panel.main input[name=login]");
+            $(document).ready(function() {
+                // $("#div1").html("헬로우 jquery<br/>헬로우 jquery");
+                $("#div1").text("헬로우 jquery<br/>헬로우 jquery");
+                $("[name=div1]").text("hello jquery");
+                $("[name=div1]").text("hello jquery");
+                $("[name=div1]:eq(1)").text($("[name=div1]:eq(1)").attr("id")+"hello jquery");
+                $("[name=div1]:eq(1)").css("color","red");
+                $("[name=div1]:eq(0)").addClass("divS")
+                $("[name=div1]:eq(0)").removeClass("divS")
+                // $("#btn1").click(
+                //     function () {
+                //         alert("It's a text")
+                //         $("[name=div1]:eq(0)").toggle();
+                //     }
+                // );
+                $("[name=div1]:eq(0)").hide();
+                $("[name=div1]:eq(0)").show();
+
+                alert($("#btn1").val());
+                // $("#btn1").on({
+                //     "click":alertBtn,
+                //     "mousedown" : alertBtn
+                // });
+                $("#btn1").on("click",alertBtn)
+
+                function alertBtn() {
+                    alert($("#btn1").val());
+                    // $("[name=div1]:eq(1)").append("헬로우 jquery<br/>헬로우 jquery")
+                    // $("<li><b>리스트 항목</b></li>").appendTo("ul")
+                    // $("ul").prepend("<li><b>리스트 항목</b></li>")
+                    // $("<li><b>리스트 항목</b></li>").prependTo("ul")
+                }
+                var arr = [1,3,5,7]
+                $.each(arr,
+                    function(index,value) {
+                        console.log(index + " : " + value);
+                }
+            );
+
+
+                // var arr = [
+                //     {name: "James",age: "24"},
+                //     {name: "Jane",age: "26"}
+                // ]
+                // $.each(arr,function(index,value) {
+                //     console.log("name:" + )
+                // })
+
+                var result = $.map([0,1,2],function(n) {
+                    console.log(n);
+                    return n+4;
+                });
+                
+                var dimensions = { width: 10, height: 15, length: 20};
+                dimensions = $.map(dimensions,function(index,value) {
+                    console.log(index+":"+value);
+                    return index;
+                });
+                var result = $.map([0,1,2],function(value,index) {
+                    console.log(index+":"+value);
+                    return value + (value>0 ?4:1);
+                });
+                
+
+            });
+        </script>
+        <a href="zindex.html">link</a>
+    </body>
+   
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script type="text/javascript">
+    var book = new Object();
+    book.title = "book1";
+    book.publisher = "publisher";
+    book.author = "author";
+    book.price = "price";
+
+    book.info = new Object();
+    book.info.pages = 442;
+    book.info.date = "2010.1.29"; 
+    book.info.ISBN10 = "8970506470";
+    book.info.size = "188mm*257mm";
+    book.info.pages = 442;
+
+    for (var p in book) {
+        document.write("Property name : " +p+ " Property value :" +book[p]+ "<br/>")
+    }
+
+    function Book(title_value,publisher_value,author_value,price_value,pages_value) {
+        this.title = title_value;
+        this.publisher = publisher_value;
+        this.author = author_value; 
+        this.price = price_value;
+        this.pages = pages_value;
+    }
+
+    function displayBook() {
+        document.write("Title: "+ this.title +"<br/>");
+        document.write("Publisher: "+ this.publisher +"<br/>");
+        document.write("Author: "+ this.author +"<br/>");
+        document.write("Price: "+ this.price +"원 <br/>");
+        document.write("Pages: "+ this.pages +"<br/>");
+    }
+    var bookob = new Book("book1","psher","auth","25000","442")
+
+    // for (var p in bookob) {
+    //     document.write("Property name : " +p+ " Property value :" +bookob[p]+ "<br/>")
+    // }
+    bookob.displayBook();
+</script>
+<body>
+    <a href="zindex.html">link</a>
+</body>
+</html>

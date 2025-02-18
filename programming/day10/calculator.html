@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>Calculator</h3>
+    <br/>
+    <h1></h1>
+
+    <input type="text" id="display" 
+       style="border: none; font-size: 30px; text-align: right; width: 290px; outline: none;" value="0">
+<br/><br/>
+    
+
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" value="%" onclick="temp(),operate('%')"/>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" value="CE" onclick="reset()"/>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" value="C" onclick="reset()"/>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" value="&larr;" onclick="backspace()"/>    
+    <br>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" name="7" value="7" onclick="pushNum('7')"/>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" name="8" value="8" onclick="pushNum('8')"/>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" name="9" value="9" onclick="pushNum('9')"/>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;"  value="&divide;" onclick="operate('/')"/>    
+    <br>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" value="4" onclick="pushNum('4')"/>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" value="5" onclick="pushNum('5')"/>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" value="6" onclick="pushNum('6')"/>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" value="&times;" onclick="operate('*')"/>    
+    <br>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" value="1" onclick="pushNum('1')"/>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" value="2" onclick="pushNum('2')"/>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" value="3" onclick="pushNum('3')"/>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" value="-" onclick="operate('-')"/>
+    <br>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" value="=" onclick="calculate()"/>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" value="0" onclick="pushNum('0')"/>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" value="." onclick="point('.')"/>
+    <input type="button" style=" font-family: Arial, Helvetica, sans-serif; font-size: 15px; width: 70px; height: 50px;" value="+" onclick="operate('+')"/>
+    <script type="text/javascript">
+        let value1;
+        let op;
+        var check =true;
+
+        function pushNum(num) {
+            if (op !== undefined && check) {
+                document.getElementById("display").value = num; 
+                check = false; 
+            } else {
+                if (document.getElementById("display").value === "0") {
+                    document.getElementById("display").value = num;
+                } else if (document.getElementById("display").value.length <= 9) {
+                    document.getElementById("display").value += num;
+                }
+            }
+        }
+        function point(num) {
+            if(document.getElementById("display").value.includes(".")) {
+            }
+            else {
+                document.getElementById("display").value += num;
+            }
+        }
+        function reset() {
+            document.getElementById("display").value ="0";
+        }
+        function backspace() {
+            document.getElementById("display").value = document.getElementById("display").value.slice(0,-1)||"0";
+        }
+        function operate(num) {
+            value1 = parseFloat(document.getElementById("display").value)
+            op = num;
+            return value1,op; 
+        }
+        function calculate() {
+            let result=0;
+            let value2=0;
+            value2 = parseFloat(document.getElementById("display").value);
+            if(op==="+") {
+                result = value1 + value2;
+            }
+            else if(op==="-") {
+                result = value1 - value2;
+            }
+            else if(op==="*") {
+                result = value1 * value2;
+            }
+            else if(op==="/") {
+                result = value1 / value2;
+            }
+            else if(op==="%") {
+                result = value1 % value2;
+            }
+            else {
+            }
+            document.getElementById("display").value = result;
+            if(document.getElementById("display").value.length>12) {
+                document.getElementById("display").style.fontSize="15px";
+            }
+            check = true;
+            op = undefined;
+        }
+    </script>
+
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <a href="zindex.html">link</a>
+</body>
+</html>

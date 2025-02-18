@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<input>
+    <a href="zindex.html">link</a>
+    <br/><br/><br/><br/><br/><br/>
+
+    <a id="link" href="https://www.google.com/">링크</a>
+    <br/><br/>
+    <input type="text" id="text"></input>
+    <button id="btn">href 속성 바꾸기</button>
+    <br/><br/>
+    <p id="currHref"></p>
+
+    <script type="text/javascript">
+        function changeHref() {
+            // input address
+            var newHref = "https://" + document.getElementById("text").value;
+            //use setAttribute to change 
+            document.getElementById("link").setAttribute("href",newHref);
+            document.getElementById("link").innerText = newHref;
+        }
+        //Set button click event function
+        document.getElementById("btn").onclick = changeHref;
+        //Get previous link
+        document.getElementById("currHerf").innerText = "기존 href = " + document.getElementById("link").getAttribute("href");
+    
+    </script>
+
+
+</body>
+</html>

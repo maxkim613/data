@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="../css/population.css" type="text/css">
+	<script type="text/javascript" src="../jquery-3.7.1.min.js"></script>	<!--jquery 주소변경-->
+	<link rel="stylesheet" href="../css/population.css" type="text/css">
+
+	<script type="text/javascript">				
+												
+		function image(province) {
+			const imageMap = {
+			"31": "../image/31.jpg",
+			"32": "../image/32.jpg",
+			"33": "../image/33.jpg",
+			"35": "../image/35.jpg",
+			"37": "../image/37.jpg"
+		};
+			const imgurl = imageMap[province];
+			return `<img src="${imgurl}" style="width: 500px; height: auto;">`;
+		}
+		function graph(province) {
+			const graphMap = {
+			"31": "../image/31p.png",
+			"32": "../image/32p.png",
+			"33": "../image/33p.png",
+			"35": "../image/35p.png",
+			"37": "../image/37p.png"
+		};
+			const graphurl = graphMap[province];
+			return `<img src="${graphurl}" style="width: 700px; height: 500px;">`;
+		}								
+		$(document).ready(function () {
+		const params = new URLSearchParams(window.location.search);
+		const province = params.get("province");
+		const name = params.get("name");
+
+		// 페이지 로드 시 동적으로 요소 삽입
+		$('#nameandmap').html(`
+			<p style="left: 200px; position: relative; font-weight: bold; font-size: 20px;">${name}</p>
+			<p style="right: 300px; top: 150px; position: absolute; font-weight: bold; font-size: 20px;">${name} 인구 분포도</p>
+			<input style="right: 190px; top: 167px; position: absolute; font-weight: bold; font-size: 20px;" type="button" id="detail" value="상세정보">
+			${image(province)}
+			${graph(province)}
+			`);
+		});	
+		$(document).ready(function () {
+			$(document).on("click", "#detail", function () {
+				const params = new URLSearchParams(window.location.search);
+				const province = params.get("province");
+				const name = params.get("name");
+				window.location.href = `page2.html?province=${province}`;
+			});
+		});
+	</script>
+</head>
+<body>
+	<header>
+		<div id="page1top" class="mainpagetop">
+			<a href="population.html" class="font1">
+				<pre>Cheonan
+<span style="font-size: smaller;">education center</span>
+				</pre></a>
+			<a href="population.html" class="font4">HOME</a>
+		</div>
+		<br/>
+	</header>
+	<article>
+		<div id="nameandmap">
+			
+		</div>
+		
+	</article>
+
+</body>
+</html>
